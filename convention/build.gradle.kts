@@ -1,8 +1,10 @@
 plugins {
     `kotlin-dsl`
+    `maven-publish`
 }
 
 group = "com.minirogue.buildlogic"
+version = "0.0.1-SNAPSHOT"
 
 java {
     sourceCompatibility = JavaVersion.toVersion(libs.versions.java.get())
