@@ -1,13 +1,12 @@
 package plugin
 
-import convention.applyUniversalConfigurations
-import convention.configureGradleChecker
-import convention.configureJvm
-import convention.configureSerialization
+import configuration.applyUniversalConfigurations
+import configuration.configureJvm
+import configuration.configureSerialization
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
-class JvmAppConventionPlugin : Plugin<Project> {
+public class JvmAppConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
@@ -22,6 +21,6 @@ class JvmAppConventionPlugin : Plugin<Project> {
     }
 }
 
-open class MinirogueJvmAppExtension(private val project: Project) {
-    fun serialization() = project.configureSerialization()
+public open class MinirogueJvmAppExtension(private val project: Project) {
+    public fun serialization(): Unit = project.configureSerialization()
 }

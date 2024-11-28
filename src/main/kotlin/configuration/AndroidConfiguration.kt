@@ -1,22 +1,26 @@
-package convention
+package configuration
 
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.LibraryExtension
+import com.android.build.gradle.LibraryPlugin
+import ext.generateProjectNamespace
+import ext.generateResourcePrefix
+import ext.getDateAsVersionName
+import ext.javaLibVersion
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
+import org.gradle.process.internal.ExecException
 
 private const val MIN_SDK = 21
 private const val COMPILE_SDK = 35
 private const val TARGET_SDK = 35
 
 internal fun Project.configureAndroidLibrary() {
-    with(pluginManager) { apply("com.android.library") }
+    with(pluginManager) { apply(LibraryPlugin::class.java) }
     extensions.configure(LibraryExtension::class.java) {
-        val modulePath = path.split(":").drop(1).filter { it != "public" }
-        namespace = "com.${rootProject.name}.${modulePath.joinToString(".").replace("-", ".")}"
-        resourcePrefix =
-            modulePath.first { it != "feature" && it != "library" }.replace("-", "_") + "_"
+        namespace = generateProjectNamespace()
+        resourcePrefix = generateResourcePrefix()
         configureAndroidCommon(this)
     }
 }
@@ -28,6 +32,7 @@ internal fun Project.configureAndroidApp() {
             targetSdk = TARGET_SDK
             versionCode = getVersionCodeFromGitHistory()
             versionName = getDateAsVersionName()
+            namespace = generateProjectNamespace()
         }
         buildTypes {
             release {
@@ -59,9 +64,12 @@ private fun Project.configureAndroidCommon(commonExtension: CommonExtension<*, *
         }
     }
 
-private fun Project.getVersionCodeFromGitHistory(): Int {
-    return providers.exec {
+private fun Project.getVersionCodeFromGitHistory(): Int = try {
+    providers.exec {
         commandLine("git", "rev-list", "--count", "HEAD")
     }.standardOutput.asText.get().trim().toInt()
         .also { logger.info("version code for $project is $it") }
+} catch (e: ExecException) {
+    logger.warn("No git history available, so $project version code set to 1")
+    1
 }

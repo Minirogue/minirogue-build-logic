@@ -1,17 +1,12 @@
-package convention
+package task
 
 import org.gradle.api.DefaultTask
-import org.gradle.api.Project
 import org.gradle.api.tasks.InputFile
 import org.gradle.api.tasks.TaskAction
 import org.gradle.api.tasks.TaskExecutionException
 import java.io.File
 
-fun Project.configureGradleChecker() {
-    tasks.register("checkGradleConfig", GradleChecker::class.java)
-}
-
-open class GradleChecker : DefaultTask() {
+internal open class GradleCheckerTask : DefaultTask() {
     @InputFile
     val gradleFile: File = project.buildFile
 

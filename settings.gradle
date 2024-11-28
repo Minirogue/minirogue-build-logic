@@ -1,10 +1,1 @@
-dependencyResolutionManagement {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
 rootProject.name = 'minirogue-build-logic'
-
-include(":convention")

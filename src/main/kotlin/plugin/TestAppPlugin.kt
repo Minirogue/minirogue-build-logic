@@ -1,20 +1,21 @@
 package plugin
 
 import com.android.build.api.dsl.ApplicationExtension
-import convention.applyUniversalConfigurations
-import convention.configureAndroidApp
-import convention.configureHilt
-import convention.libs
+import com.android.build.gradle.AppPlugin
+import com.android.build.gradle.internal.utils.KOTLIN_ANDROID_PLUGIN_ID
+import configuration.applyUniversalConfigurations
+import configuration.configureAndroidApp
+import configuration.configureHilt
+import ext.generateProjectNamespace
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.jetbrains.kotlin.gradle.plugin.sources.android.findAndroidSourceSet
 
-class TestAppPlugin : Plugin<Project> {
+public class TestAppPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
-                apply("com.android.application")
-                apply("kotlin-android")
+                apply(AppPlugin::class.java)
+                apply(KOTLIN_ANDROID_PLUGIN_ID)
             }
             applyUniversalConfigurations(useGradleChecker = false)
             configureAndroidApp()
@@ -24,7 +25,7 @@ class TestAppPlugin : Plugin<Project> {
                 defaultConfig {
                     applicationId = "com.${target.rootProject.name}.test.app"
                 }
-                namespace = "com.${target.rootProject.name}.test.app"
+                namespace = generateProjectNamespace()
             }
 
             extensions.create(
@@ -36,5 +37,5 @@ class TestAppPlugin : Plugin<Project> {
     }
 }
 
-open class MinirogueTestAppExtension(private val project: Project) {
+public open class MinirogueTestAppExtension(private val project: Project) {
 }

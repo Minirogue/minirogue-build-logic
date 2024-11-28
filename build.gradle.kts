@@ -1,10 +1,20 @@
 plugins {
     `kotlin-dsl`
     `maven-publish`
+    libs.plugins.gradle.publish
 }
 
-group = "com.minirogue.buildlogic"
-version = "0.0.1-SNAPSHOT"
+group = "org.minirogue"
+version = "0.0.1"
+
+kotlin {
+    explicitApiWarning()
+}
+
+repositories {
+    google()
+    mavenCentral()
+}
 
 java {
     sourceCompatibility = JavaVersion.toVersion(libs.versions.java.get())
@@ -12,10 +22,14 @@ java {
 }
 
 dependencies {
-    compileOnly(libs.android.gradlePlugin)
-    compileOnly(libs.detekt.gradlePlugin)
-    compileOnly(libs.kotlin.gradlePlugin)
-    compileOnly(libs.room.gradlePlugin)
+    implementation(libs.android.gradlePlugin)
+    implementation(libs.compose.gradlePlugin)
+    implementation(libs.detekt.gradlePlugin)
+    implementation(libs.hilt.gradlePlugin)
+    implementation(libs.kotlin.gradlePlugin)
+    implementation(libs.ksp.gradlePlugin)
+    implementation(libs.room.gradlePlugin)
+    implementation(libs.serialization.gradlePlugin)
 }
 
 gradlePlugin {
