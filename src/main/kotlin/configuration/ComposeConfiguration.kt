@@ -4,9 +4,6 @@ import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project
 import org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradleSubplugin
 
-// TODO would be good to represent this in a way that dependabot can pick up
-private const val COMPOSE_BOM_VERSION = "2024.11.00"
-
 internal fun Project.configureCompose() {
     pluginManager.apply(ComposeCompilerGradleSubplugin::class.java)
     extensions.findByType(CommonExtension::class.java)?.also {

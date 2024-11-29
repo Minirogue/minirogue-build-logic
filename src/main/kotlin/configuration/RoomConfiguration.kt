@@ -6,9 +6,6 @@ import ext.isMultiplatform
 import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 
-// TODO need to ensure this is consistent with gradle plugin and can be updated via dependabot
-private const val ROOM_VERSION = "2.7.0-alpha11"
-
 internal fun Project.configureRoom() {
     with(pluginManager) {
         applyKsp()

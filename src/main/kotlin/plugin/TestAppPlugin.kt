@@ -37,5 +37,4 @@ public class TestAppPlugin : Plugin<Project> {
     }
 }
 
-public open class MinirogueTestAppExtension(private val project: Project) {
-}
+public open class MinirogueTestAppExtension

@@ -11,6 +11,7 @@ internal open class CreateDetektConfigTask : DefaultTask() {
     @OutputFile
     val outputFile = project.file("build/minirogue/detekt-config.yml")
 
+    // TODO it would also be nice to share the config with the one used for this project
     @TaskAction
     fun writeDetektConfig() {
         outputFile.printWriter().use { out ->

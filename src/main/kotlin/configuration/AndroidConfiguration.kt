@@ -7,7 +7,7 @@ import com.android.build.gradle.LibraryPlugin
 import ext.generateProjectNamespace
 import ext.generateResourcePrefix
 import ext.getDateAsVersionName
-import ext.javaLibVersion
+import ext.JAVA_LIB_VERSION
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.process.internal.ExecException
@@ -56,8 +56,8 @@ private fun Project.configureAndroidCommon(commonExtension: CommonExtension<*, *
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
         compileOptions {
-            sourceCompatibility = JavaVersion.toVersion(javaLibVersion)
-            targetCompatibility = JavaVersion.toVersion(javaLibVersion)
+            sourceCompatibility = JavaVersion.toVersion(JAVA_LIB_VERSION)
+            targetCompatibility = JavaVersion.toVersion(JAVA_LIB_VERSION)
         }
         lint {
             baseline = file("lint-baseline.xml")
@@ -70,6 +70,6 @@ private fun Project.getVersionCodeFromGitHistory(): Int = try {
     }.standardOutput.asText.get().trim().toInt()
         .also { logger.info("version code for $project is $it") }
 } catch (e: ExecException) {
-    logger.warn("No git history available, so $project version code set to 1")
+    logger.warn("No git history available, so $project version code set to 1", e)
     1
 }
