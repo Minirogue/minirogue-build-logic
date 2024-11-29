@@ -2,6 +2,7 @@ package configuration
 
 import androidx.room.gradle.RoomExtension
 import androidx.room.gradle.RoomGradlePlugin
+import ext.ROOM_VERSION
 import ext.isMultiplatform
 import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.dsl.kotlinExtension

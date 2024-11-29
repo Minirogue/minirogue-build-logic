@@ -1,6 +1,7 @@
 package configuration
 
 import com.android.build.api.dsl.CommonExtension
+import ext.COMPOSE_BOM_VERSION
 import org.gradle.api.Project
 import org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradleSubplugin
 
