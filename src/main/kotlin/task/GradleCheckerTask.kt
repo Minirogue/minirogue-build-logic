@@ -7,9 +7,21 @@ import org.gradle.api.tasks.TaskExecutionException
 import java.io.File
 
 internal open class GradleCheckerTask : DefaultTask() {
+    private val acceptableRoots = listOf(
+        "plugins",
+        "minirogue",
+        "kotlin.sourceSets.androidMain.dependencies",
+        "kotlin.sourceSets.androidUnitTest.dependencies",
+        "kotlin.sourceSets.androidInstrumentedTest.dependencies",
+        "kotlin.sourceSets.commonMain.dependencies",
+        "dependencies",
+        "}"
+    )
+
     @InputFile
     val gradleFile: File = project.buildFile
 
+    @Suppress("MagicNumber")
     @TaskAction
     fun checkGradle() {
         val allLines = gradleFile.readLines()
@@ -18,9 +30,15 @@ internal open class GradleCheckerTask : DefaultTask() {
     }
 
     private fun checkPluginsLines(pluginsLines: List<String>) {
-        assert(pluginsLines[0] == "plugins {") { "first line of build.gradle must be \"plugins {\": ${pluginsLines[0]}" }
-        assert(pluginsLines[1].contains("minirogue.")) { "Only minirogue plugins are allowed in the plugin block: ${pluginsLines[1].trim()}" }
-        assert(pluginsLines[2] == "}") { "plugins block should only contain one (minirogue plugin) and end with \"}\": ${pluginsLines[2]}" }
+        assert(pluginsLines[0] == "plugins {") {
+            "first line of build.gradle must be \"plugins {\": ${pluginsLines[0]}"
+        }
+        assert(pluginsLines[1].contains("minirogue.")) {
+            "Only minirogue plugins are allowed in the plugin block: ${pluginsLines[1].trim()}"
+        }
+        assert(pluginsLines[2] == "}") {
+            "plugins block should only contain one (minirogue plugin) and end with \"}\": ${pluginsLines[2]}"
+        }
     }
 
     private fun checkRootLines(rootLines: List<String>) {
@@ -38,18 +56,5 @@ internal open class GradleCheckerTask : DefaultTask() {
                 )
             )
         }
-    }
-
-    companion object {
-        private val acceptableRoots = listOf(
-            "plugins",
-            "minirogue",
-            "kotlin.sourceSets.androidMain.dependencies",
-            "kotlin.sourceSets.androidUnitTest.dependencies",
-            "kotlin.sourceSets.androidInstrumentedTest.dependencies",
-            "kotlin.sourceSets.commonMain.dependencies",
-            "dependencies",
-            "}"
-        )
     }
 }

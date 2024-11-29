@@ -33,5 +33,8 @@ internal open class CreateSrcTask @Inject constructor(sourceType: SourceType) : 
         // directories should be automatically created by the task at execution if they don't already exist
     }
 
-    private fun sourceDirectory(source: String): String = "src${File.separator}$source${File.separator}kotlin${File.separator}$pathToAdd"
+    private fun sourceDirectory(source: String): String = "src${File.separator}" +
+            "$source${File.separator}" +
+            "kotlin${File.separator}" +
+            pathToAdd
 }

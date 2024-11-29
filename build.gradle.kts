@@ -1,7 +1,8 @@
 plugins {
     `kotlin-dsl`
     `maven-publish`
-    libs.plugins.gradle.publish
+    alias(libs.plugins.gradle.publish)
+    alias(libs.plugins.detekt)
 }
 
 group = "org.minirogue"
@@ -19,6 +20,11 @@ repositories {
 java {
     sourceCompatibility = JavaVersion.toVersion(libs.versions.java.get())
     targetCompatibility = JavaVersion.toVersion(libs.versions.java.get())
+}
+
+detekt {
+    config.setFrom(files("detekt-config.yml"))
+    buildUponDefaultConfig = true
 }
 
 dependencies {
