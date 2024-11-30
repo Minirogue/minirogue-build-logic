@@ -37,4 +37,4 @@ public class TestAppPlugin : Plugin<Project> {
     }
 }
 
-public open class MinirogueTestAppExtension
+public open class MinirogueTestAppExtension(project: Project)

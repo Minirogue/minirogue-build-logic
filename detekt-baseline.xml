@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>UnusedPrivateProperty:TestAppPlugin.kt$MinirogueTestAppExtension$project: Project</ID>
+  </CurrentIssues>
+</SmellBaseline>
