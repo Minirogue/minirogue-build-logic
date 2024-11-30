@@ -40,7 +40,14 @@ Then the following plugins may be used for any gradle modules contained in the p
 - `minirogue.android.app`
 - `minirogue.jvm.app`
 
-Then you may use the `minirogue` extension in the `build.gradle` file using the plugin to configure it.
+Then you may use the `minirogue` extension in the `build.gradle` file using the plugin to configure it:
+```groovy
+minirogue {
+    android {
+        hilt()
+    }
+}
+```
 
 ## Used by
 I will add a list here of repos that I have which use the build logic defined in this repo once they are publicly viewable.
