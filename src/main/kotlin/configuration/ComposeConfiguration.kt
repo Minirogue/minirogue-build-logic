@@ -1,22 +1,44 @@
 package configuration
 
 import com.android.build.api.dsl.CommonExtension
-import ext.COMPOSE_BOM_VERSION
+import ext.isMultiplatform
 import org.gradle.api.Project
+import org.jetbrains.compose.ComposeExtension
+import org.jetbrains.compose.ComposePlugin
+import org.jetbrains.compose.desktop.DesktopExtension
 import org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradleSubplugin
+import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 
-internal fun Project.configureCompose() {
+internal fun Project.configureCompose(desktopMainClass: String? = null) {
     pluginManager.apply(ComposeCompilerGradleSubplugin::class.java)
+    pluginManager.apply(ComposePlugin::class.java)
     extensions.findByType(CommonExtension::class.java)?.also {
         it.buildFeatures {
             compose = true
         }
-        with(dependencies) {
-            add("implementation", platform("androidx.compose:compose-bom:$COMPOSE_BOM_VERSION"))
-            add("implementation", "androidx.activity:activity-compose")
-            add("implementation", "androidx.compose.material3:material3")
-//            add("implementation", libs.findLibrary("compose.uiToolingPreview").get())
-//            add("debugImplementation", libs.findLibrary("compose.uiTooling").get())
+    }
+    val composeDependencies = ComposePlugin.Dependencies(this)
+    if (isMultiplatform()) {
+        kotlinExtension.sourceSets.named("commonMain") {
+            dependencies {
+                implementation(composeDependencies.foundation)
+                implementation(composeDependencies.material3)
+                implementation(composeDependencies.runtime)
+                implementation(ComposePlugin.CommonComponentsDependencies.resources)
+            }
         }
+    } else {
+        dependencies.apply {
+            add("implementation", composeDependencies.foundation)
+            add("implementation", composeDependencies.material3)
+            add("implementation", composeDependencies.runtime)
+            add("implementation", ComposePlugin.CommonComponentsDependencies.resources)
+        }
+    }
+
+    if (desktopMainClass != null) {
+        dependencies.add("implementation", ComposePlugin.DesktopDependencies.currentOs)
+        extensions.getByType(ComposeExtension::class.java).extensions
+            .getByType(DesktopExtension::class.java).application.mainClass = desktopMainClass
     }
 }
