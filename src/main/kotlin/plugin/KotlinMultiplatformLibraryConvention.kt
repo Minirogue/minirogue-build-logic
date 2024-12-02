@@ -44,6 +44,8 @@ public open class MinirogueMultiplatformLibraryExtension(private val project: Pr
         jvmActions.execute(JvmConfig((project)))
     }
 
+    public fun kotlinCompose(): Unit = project.configureCompose()
+
     public fun serialization(): Unit = project.configureSerialization()
     public fun explicitBackingFields(): Unit = project.extensions.configure(KotlinProjectExtension::class.java) {
         sourceSets.all {
@@ -53,6 +55,7 @@ public open class MinirogueMultiplatformLibraryExtension(private val project: Pr
 }
 
 public class AndroidConfig(private val project: Project) {
+    @Deprecated("Use multiplatform \"kotlinCompose()\" configuration")
     public fun composeUi(): Unit = project.configureCompose()
     public fun hilt() : Unit= project.configureHilt()
     public fun room() : Unit= project.configureRoom()
