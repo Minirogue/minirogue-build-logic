@@ -12,7 +12,7 @@ pluginManagement {
     resolutionStrategy {
         eachPlugin {
             if (requested.id.toString() == "com.github.minirogue")
-                useModule("com.github.minirogue:minirogue-build-logic:0.0.3")
+                useModule("com.github.minirogue:minirogue-build-logic:$requested.version")
         }
     }
     repositories {
