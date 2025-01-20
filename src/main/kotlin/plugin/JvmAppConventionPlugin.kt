@@ -1,8 +1,9 @@
 package plugin
 
-import configuration.*
 import configuration.applyUniversalConfigurations
 import configuration.configureCompose
+import configuration.configureJvm
+import configuration.configureJvmApp
 import configuration.configureSerialization
 import org.gradle.api.Plugin
 import org.gradle.api.Project
