@@ -61,9 +61,9 @@ As of version 0.0.6 the following dependencies and versions are used:
 - [Detekt](https://detekt.dev/changelog) = 1.23.7
 - [Hilt](https://github.com/google/dagger/releases) = 2.55
 - [Java](https://www.java.com/releases/) = 17
-- [Kotlin](https://kotlinlang.org/docs/releases.html#release-details) = 2.1.0
+- [Kotlin](https://kotlinlang.org/docs/releases.html#release-details) = 2.1.10
 - [Kotlin Serialization](https://github.com/Kotlin/kotlinx.serialization/releases) = 1.8.0
-- [Kotlin Symbol Processing](https://github.com/google/ksp/releases) = 2.1.0-1.0.29
+- [Kotlin Symbol Processing](https://github.com/google/ksp/releases) = 2.1.10-1.0.29
 - [Ktlint Plugin](https://github.com/JLLeitschuh/ktlint-gradle/releases) = 2.1.12
 - [Room](https://developer.android.com/jetpack/androidx/releases/room) = 2.7.0-beta01
 
