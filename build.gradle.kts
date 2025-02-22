@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "org.minirogue"
-version = "0.0.5"
+version = "0.0.6"
 
 kotlin {
     explicitApiWarning()
@@ -15,6 +15,7 @@ kotlin {
 repositories {
     google()
     mavenCentral()
+    gradlePluginPortal()
 }
 
 java {
@@ -35,6 +36,7 @@ dependencies {
     implementation(libs.hilt.gradlePlugin)
     implementation(libs.kotlin.gradlePlugin)
     implementation(libs.ksp.gradlePlugin)
+    implementation(libs.ktlint.gradlePlugin)
     implementation(libs.room.gradlePlugin)
     implementation(libs.serialization.gradlePlugin)
 }
