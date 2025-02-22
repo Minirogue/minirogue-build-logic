@@ -10,7 +10,7 @@ ktlintPlugin = "12.1.1" # https://github.com/JLLeitschuh/ktlint-gradle/releases
 # The following should match Versions.kt
 java = "17"
 room = "2.7.0-alpha12" # https://developer.android.com/jetpack/androidx/releases/room
-serialization = "1.8.0" # https://github.com/Kotlin/kotlinx.serialization/releases
+serialization = "2.1.10" # https://github.com/Kotlin/kotlinx.serialization/releases
 
 [libraries]
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradle" }
