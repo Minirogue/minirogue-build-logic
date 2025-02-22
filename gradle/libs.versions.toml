@@ -9,7 +9,7 @@ ksp = "2.1.0-1.0.29" # https://github.com/google/ksp/releases
 ktlintPlugin = "12.1.1" # https://github.com/JLLeitschuh/ktlint-gradle/releases
 # The following should match Versions.kt
 java = "17"
-room = "2.7.0-alpha12" # https://developer.android.com/jetpack/androidx/releases/room
+room = "2.7.0-beta01" # https://developer.android.com/jetpack/androidx/releases/room
 serialization = "1.8.0" # https://github.com/Kotlin/kotlinx.serialization/releases
 
 [libraries]
