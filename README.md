@@ -65,7 +65,7 @@ As of version 0.0.6 the following dependencies and versions are used:
 - [Kotlin Serialization](https://github.com/Kotlin/kotlinx.serialization/releases) = 1.8.0
 - [Kotlin Symbol Processing](https://github.com/google/ksp/releases) = 2.1.10-1.0.29
 - [Ktlint Plugin](https://github.com/JLLeitschuh/ktlint-gradle/releases) = 2.1.12
-- [Room](https://developer.android.com/jetpack/androidx/releases/room) = 2.7.0-beta01
+- [Room](https://developer.android.com/jetpack/androidx/releases/room) = 2.7.0-rc02
 
 ## TODO
 - Add docs for each plugin to detail their configurations
