@@ -1,5 +1,6 @@
 package configuration
 
+import ext.DETEKT_VERSION
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektPlugin
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
@@ -10,6 +11,8 @@ private const val CREATE_DETEKT_CONFIG_TASK = "createDetektConfig"
 
 internal fun Project.configureDetekt() {
     plugins.apply(DetektPlugin::class.java)
+    // Add formatting, which is a wrapper around ktlint
+    dependencies.add("detektPlugins", "io.gitlab.arturbosch.detekt:detekt-formatting:$DETEKT_VERSION")
 
     tasks.register(CREATE_DETEKT_CONFIG_TASK, CreateDetektConfigTask::class.java)
     tasks.withType(Detekt::class.java) { dependsOn(CREATE_DETEKT_CONFIG_TASK) }
@@ -18,5 +21,6 @@ internal fun Project.configureDetekt() {
         source.setFrom("src/main", "src/androidMain", "src/commonMain", "src/jvmMain")
         config.setFrom(files(tasks.getByName(CREATE_DETEKT_CONFIG_TASK)))
         buildUponDefaultConfig = true
+        autoCorrect = true
     }
 }

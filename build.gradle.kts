@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "org.minirogue"
-version = "0.0.6"
+version = "0.0.7"
 
 kotlin {
     explicitApiWarning()
@@ -36,7 +36,6 @@ dependencies {
     implementation(libs.hilt.gradlePlugin)
     implementation(libs.kotlin.gradlePlugin)
     implementation(libs.ksp.gradlePlugin)
-    implementation(libs.ktlint.gradlePlugin)
     implementation(libs.room.gradlePlugin)
     implementation(libs.serialization.gradlePlugin)
 }

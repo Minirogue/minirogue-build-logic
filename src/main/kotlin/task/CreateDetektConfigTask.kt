@@ -29,6 +29,14 @@ internal open class CreateDetektConfigTask : DefaultTask() {
                     active: true
                 MagicNumber:
                     ignoreEnums: true
+                NewLineAtEndOfFile:
+                    active: false # overlaps with formatting rule
+                    
+            formatting:
+                TrailingCommaOnCallSite:
+                    active: true
+                TrailingCommaOnDeclarationSite:
+                    active: true
         """.trimIndent()
             )
         }
