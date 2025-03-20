@@ -23,7 +23,7 @@ internal fun Project.configureDetekt() {
         //   depend on the single config file produced by this single task
         rootProject.tasks.register(CREATE_DETEKT_CONFIG_TASK, CreateDetektConfigTask::class.java)
     }
-    tasks.withType(Detekt::class.java) { dependsOn(":$CREATE_DETEKT_CONFIG_TASK") }
+    tasks.withType(Detekt::class.java) { dependsOn(rootProject.tasks.getByName(CREATE_DETEKT_CONFIG_TASK)) }
 
     extensions.configure(DetektExtension::class.java) {
         source.setFrom("src/main", "src/androidMain", "src/commonMain", "src/jvmMain")
