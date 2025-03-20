@@ -24,7 +24,7 @@ pluginManagement {
 Then add the following to the version catalog:
 ```toml
 [plugins]
-minirogue-plugin = { id = "com.github.minirogue", version = "0.0.6" }
+minirogue-plugin = { id = "com.github.minirogue", version = "0.0.7" }
 ``` 
 and finally add the following to the root project `build.gradle`
 ```groovy
@@ -55,16 +55,15 @@ I will add a list here of repos that I have which use the build logic defined in
 ## Dependencies
 
 This repo manages several dependencies (namely ones that have related gradle plugins) that will be inherited by any projects that consume it.
-As of version 0.0.6 the following dependencies and versions are used:
+As of version 0.0.7 the following dependencies and versions are used:
 - [Android Gradle Plugin](https://developer.android.com/build/releases/gradle-plugin) = 8.8.1
 - [Compose Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-compose-1610.html) = 1.7.3
-- [Detekt](https://detekt.dev/changelog) = 1.23.7
+- [Detekt](https://detekt.dev/changelog) = 1.23.8
 - [Hilt](https://github.com/google/dagger/releases) = 2.55
 - [Java](https://www.java.com/releases/) = 17
 - [Kotlin](https://kotlinlang.org/docs/releases.html#release-details) = 2.1.10
 - [Kotlin Serialization](https://github.com/Kotlin/kotlinx.serialization/releases) = 1.8.0
 - [Kotlin Symbol Processing](https://github.com/google/ksp/releases) = 2.1.10-1.0.29
-- [Ktlint Plugin](https://github.com/JLLeitschuh/ktlint-gradle/releases) = 2.1.12
 - [Room](https://developer.android.com/jetpack/androidx/releases/room) = 2.7.0-beta01
 
 ## TODO
