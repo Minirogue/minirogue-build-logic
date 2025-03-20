@@ -5,7 +5,6 @@ import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektPlugin
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Project
-import org.jetbrains.compose.internal.utils.registerOrConfigure
 import task.CreateDetektConfigTask
 
 private const val CREATE_DETEKT_CONFIG_TASK = "createDetektConfig"
