@@ -28,10 +28,16 @@ internal open class CreateDetektConfigTask : DefaultTask() {
                     active: true
                 MagicNumber:
                     ignoreEnums: true
+                MaxLineLength:
+                    active: false # overlaps with formatting>MaximumLineLength
+                ModifierOrder:
+                    active: false # overlaps with formatting>ModifierOrdering
                 NewLineAtEndOfFile:
-                    active: false # overlaps with formatting rule
+                    active: false # overlaps with formatting>FinalNewline
                     
             formatting:
+                Filename:
+                    active: false # overlaps with naming>MatchingDeclarationName
                 TrailingCommaOnCallSite:
                     active: true
                 TrailingCommaOnDeclarationSite:
