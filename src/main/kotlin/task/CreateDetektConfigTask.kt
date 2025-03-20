@@ -7,11 +7,10 @@ import org.gradle.api.tasks.TaskAction
 
 @CacheableTask
 internal open class CreateDetektConfigTask : DefaultTask() {
-    // TODO would be nice to share a single config file and not repeat this for every module
     @OutputFile
     val outputFile = project.file("build/minirogue/detekt-config.yml")
 
-    // TODO it would also be nice to share the config with the one used for this project
+    // TODO it would be nice to share the config with the one used for this project
     @TaskAction
     fun writeDetektConfig() {
         outputFile.printWriter().use { out ->
