@@ -1,11 +1,11 @@
 package configuration
 
-import ext.DETEKT_VERSION
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektPlugin
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Project
 import task.CreateDetektConfigTask
+import versions.DETEKT_VERSION
 
 private const val CREATE_DETEKT_CONFIG_TASK = "createDetektConfig"
 
@@ -22,7 +22,13 @@ internal fun Project.configureDetekt() {
         //   depend on the single config file produced by this single task
         rootProject.tasks.register(CREATE_DETEKT_CONFIG_TASK, CreateDetektConfigTask::class.java)
     }
-    tasks.withType(Detekt::class.java) { dependsOn(rootProject.tasks.getByName(CREATE_DETEKT_CONFIG_TASK)) }
+    tasks.withType(Detekt::class.java) {
+        dependsOn(
+            rootProject.tasks.getByName(
+                CREATE_DETEKT_CONFIG_TASK
+            )
+        )
+    }
 
     extensions.configure(DetektExtension::class.java) {
         source.setFrom("src/main", "src/androidMain", "src/commonMain", "src/jvmMain")

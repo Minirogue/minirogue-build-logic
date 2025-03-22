@@ -7,10 +7,10 @@ import com.android.build.gradle.LibraryPlugin
 import ext.generateProjectNamespace
 import ext.generateResourcePrefix
 import ext.getDateAsVersionName
-import ext.JAVA_LIB_VERSION
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.process.internal.ExecException
+import versions.JAVA_VERSION
 
 private const val MIN_SDK = 21
 private const val COMPILE_SDK = 35
@@ -56,8 +56,8 @@ private fun Project.configureAndroidCommon(commonExtension: CommonExtension<*, *
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
         compileOptions {
-            sourceCompatibility = JavaVersion.toVersion(JAVA_LIB_VERSION)
-            targetCompatibility = JavaVersion.toVersion(JAVA_LIB_VERSION)
+            sourceCompatibility = JavaVersion.toVersion(JAVA_VERSION)
+            targetCompatibility = JavaVersion.toVersion(JAVA_VERSION)
         }
         lint {
             baseline = file("lint-baseline.xml")
