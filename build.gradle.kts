@@ -18,7 +18,6 @@ repositories {
     google()
     mavenCentral()
     gradlePluginPortal()
-    mavenLocal()
 }
 
 java {
