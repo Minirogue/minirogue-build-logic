@@ -1,7 +1,8 @@
 <?xml version="1.0" ?>
 <SmellBaseline>
-  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <ManuallySuppressedIssues/>
   <CurrentIssues>
+    <ID>MaxLineLength:CreateGitHubConfigTask.kt$CreateGitHubConfigTask$println(" run: ./gradlew assembleDebug testDebugUnitTest testJvm detekt lint --continue &amp;&amp; ./gradlew --stop")</ID>
     <ID>UnusedPrivateProperty:TestAppPlugin.kt$MinirogueTestAppExtension$project: Project</ID>
   </CurrentIssues>
 </SmellBaseline>
