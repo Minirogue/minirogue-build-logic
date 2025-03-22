@@ -69,5 +69,4 @@ As of version 0.0.8 the following dependencies and versions are used:
 ## TODO
 - Add docs for each plugin to detail their configurations
 - Share the same config for this project's detekt and and the config that it uses for consuming libraries
-- Find a way to unify the versions in `Versions.kt` and the version catalog
 - Set up some tests
