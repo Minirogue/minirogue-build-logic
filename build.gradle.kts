@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     `kotlin-dsl`
     `maven-publish`
@@ -59,4 +61,56 @@ gradlePlugin {
             implementationClass = "plugin.JvmAppConventionPlugin"
         }
     }
+}
+
+// Add versions to this library's source code
+val generatedVersionSourceDir =
+    layout.buildDirectory.dir("generated${File.separator}source${File.separator}versions")
+tasks.register("generatePluginVersionSource").configure {
+    val versionCatalogFile =
+        layout.projectDirectory.file("gradle${File.separator}libs.versions.toml")
+    inputs.file(versionCatalogFile)
+    outputs.dir(generatedVersionSourceDir)
+    doLast {
+        val versionLines = extractVersionLines(versionCatalogFile.asFile)
+        generatedVersionSourceDir.get().file("Versions.kt").asFile.apply {
+            parentFile.mkdirs()
+            writeText(
+                buildString {
+                    appendLine("// Generated file. Do not edit!")
+                    appendLine("package versions")
+                    appendLine()
+                    versionLines.forEach { appendLine(it) }
+                }
+            )
+        }
+    }
+}
+sourceSets["main"].kotlin { srcDir(generatedVersionSourceDir) }
+tasks.withType<KotlinCompile>().configureEach { dependsOn("generatePluginVersionSource") }
+tasks.withType<Jar>().configureEach { dependsOn("generatePluginVersionSource") }
+
+fun extractVersionLines(file: File): List<String> {
+    val fileLines = file.readLines()
+    var isInVersionsSection = false
+    val listOfVersionLines = mutableListOf<String>()
+    for (line in fileLines) {
+        if (line.startsWith("[")) {
+            isInVersionsSection = line.contains("[versions]")
+        }
+        if (isInVersionsSection && line.contains("=")) {
+            listOfVersionLines.add(
+                buildString {
+                    append("internal const val ")
+                    append(
+                        line.split("#").first() // remove comments
+                            .uppercase()
+                            .trim()
+                            .replaceFirst(" ", "_VERSION ")
+                    )
+                }
+            )
+        }
+    }
+    return listOfVersionLines
 }

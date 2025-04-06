@@ -1,10 +1,10 @@
 package configuration
 
-import ext.SERIALIZATION_VERSION
 import ext.isMultiplatform
 import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 import org.jetbrains.kotlinx.serialization.gradle.SerializationGradleSubplugin
+import versions.SERIALIZATION_VERSION
 
 internal fun Project.configureSerialization() {
     with(pluginManager) {
