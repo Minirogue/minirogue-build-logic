@@ -70,3 +70,4 @@ As of version 0.0.8 the following dependencies and versions are used:
 - Add docs for each plugin to detail their configurations
 - Share the same config for this project's detekt and and the config that it uses for consuming libraries
 - Set up some tests
+- Figure out test tasks for CI config given JVM apps, Android Apps, multiplatform code, etc.
