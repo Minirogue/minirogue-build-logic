@@ -5,6 +5,7 @@ import configuration.configureCompose
 import configuration.configureJvm
 import configuration.configureJvmApp
 import configuration.configureSerialization
+import configuration.configureDummyAssembleDebugTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -16,6 +17,7 @@ public class JvmAppConventionPlugin : Plugin<Project> {
             }
             applyUniversalConfigurations(useGradleChecker = false)
             configureJvm()
+            configureDummyAssembleDebugTask()
 
             extensions.create("minirogue", MinirogueJvmAppExtension::class.java, target)
         }
