@@ -8,7 +8,7 @@ java = "17"
 kotlin = "2.1.20" # https://kotlinlang.org/docs/releases.html#release-details
 ksp = "2.1.20-2.0.0" # https://github.com/google/ksp/releases
 room = "2.7.0-rc02" # https://developer.android.com/jetpack/androidx/releases/room
-serialization = "1.8.0" # https://github.com/Kotlin/kotlinx.serialization/releases
+serialization = "1.8.1" # https://github.com/Kotlin/kotlinx.serialization/releases
 
 [libraries]
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradle" }
