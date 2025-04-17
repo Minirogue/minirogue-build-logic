@@ -46,12 +46,20 @@ internal open class CreateGitHubConfigTask @Inject constructor() : DefaultTask()
                 println("        with:")
                 println("          path: |")
                 println("            ~/.gradle/caches")
-                println("           ~/.gradle/wrapper")
+                println("            ~/.gradle/wrapper")
                 println("          key: \${{ runner.os }}-gradle-\${{ github.run_id }}")
                 println("          restore-keys: |")
                 println("            \${{ runner.os }}-gradle-")
                 println("      - name: Gradle build and checks")
-                println("        run: ./gradlew assembleDebug testDebugUnitTest testJvm detekt lint --continue && ./gradlew --stop")
+                println(
+                    "        run: ./gradlew assembleDebug " +
+                            "testDebugUnitTest " +
+                            "jvmTest " +
+                            "detekt " +
+                            "lint " +
+                            "--continue && " +
+                            "./gradlew --stop"
+                )
             }
         }
     }

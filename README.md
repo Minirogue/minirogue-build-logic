@@ -63,10 +63,11 @@ As of version 0.0.8 the following dependencies and versions are used:
 - [Java](https://www.java.com/releases/) = 17
 - [Kotlin](https://kotlinlang.org/docs/releases.html#release-details) = 2.1.20
 - [Kotlin Serialization](https://github.com/Kotlin/kotlinx.serialization/releases) = 1.8.1
-- [Kotlin Symbol Processing](https://github.com/google/ksp/releases) = 2.1.20-1.0.31
+- [Kotlin Symbol Processing](https://github.com/google/ksp/releases) = 2.1.20-2.0.0
 - [Room](https://developer.android.com/jetpack/androidx/releases/room) = 2.7.0-rc02
 
 ## TODO
 - Add docs for each plugin to detail their configurations
 - Share the same config for this project's detekt and and the config that it uses for consuming libraries
 - Set up some tests
+- Figure out test tasks for CI config given JVM apps, Android Apps, multiplatform code, etc.
