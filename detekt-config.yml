@@ -3,11 +3,29 @@ config:
   warningsAsErrors: false
   excludes: ''
 
-naming:
-  FunctionNaming:
-    ignoreAnnotated: ['Composable']
-style:
-  UnusedImports:
-    active: true
-  MagicNumber:
-    ignoreEnums: true
+  naming:
+    FunctionNaming:
+      ignoreAnnotated: ['Composable']
+  style:
+    UnusedImports:
+      active: true
+    MagicNumber:
+      ignoreEnums: true
+    MaxLineLength:
+      active: false # overlaps with formatting>MaximumLineLength
+    ModifierOrder:
+      active: false # overlaps with formatting>ModifierOrdering
+    NewLineAtEndOfFile:
+      active: false # overlaps with formatting>FinalNewline
+
+  formatting:
+    Filename:
+      active: false # overlaps with naming>MatchingDeclarationName
+    TrailingCommaOnCallSite:
+      active: true
+    TrailingCommaOnDeclarationSite:
+      active: true
+
+  complexity:
+    LongParameterList:
+      active: false

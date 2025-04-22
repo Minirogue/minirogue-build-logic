@@ -42,6 +42,10 @@ internal open class CreateDetektConfigTask : DefaultTask() {
                     active: true
                 TrailingCommaOnDeclarationSite:
                     active: true
+                    
+            complexity:
+                LongParameterList:
+                    active: false
         """.trimIndent()
             )
         }
