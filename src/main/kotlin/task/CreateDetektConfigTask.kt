@@ -14,7 +14,8 @@ internal open class CreateDetektConfigTask : DefaultTask() {
     @TaskAction
     fun writeDetektConfig() {
         outputFile.printWriter().use { out ->
-            out.println("""
+            out.println(
+                """
             config:
                 validation: true
                 warningsAsErrors: false
@@ -46,7 +47,7 @@ internal open class CreateDetektConfigTask : DefaultTask() {
             complexity:
                 LongParameterList:
                     active: false
-        """.trimIndent()
+                """.trimIndent(),
             )
         }
     }
