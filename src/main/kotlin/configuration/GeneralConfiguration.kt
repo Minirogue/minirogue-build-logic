@@ -4,6 +4,7 @@ import ext.isMultiplatform
 import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import task.GradleCheckerTask
+import task.MINIROGUE_TASK_GROUP
 import task.SourceType
 
 internal fun Project.applyUniversalConfigurations(useGradleChecker: Boolean = true) {
@@ -17,5 +18,9 @@ internal fun Project.applyUniversalConfigurations(useGradleChecker: Boolean = tr
 }
 
 private fun Project.configureGradleChecker() {
-    tasks.register("checkGradleConfig", GradleCheckerTask::class.java)
+    tasks.register("checkGradleConfig", GradleCheckerTask::class.java) {
+        group = MINIROGUE_TASK_GROUP
+        description =
+            "Checks the gradle file to ensure it follows a \"3-block\" format with only one plugin"
+    }
 }
