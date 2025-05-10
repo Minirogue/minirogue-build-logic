@@ -7,7 +7,7 @@ hilt = "2.56.2" # https://github.com/google/dagger/releases
 java = "17"
 kotlinLang = "2.1.20" # https://kotlinlang.org/docs/releases.html#release-details
 ksp = "2.1.20-2.0.0" # https://github.com/google/ksp/releases
-room = "2.7.0" # https://developer.android.com/jetpack/androidx/releases/room
+room = "2.7.1" # https://developer.android.com/jetpack/androidx/releases/room
 serialization = "1.8.1" # https://github.com/Kotlin/kotlinx.serialization/releases
 
 [libraries]
