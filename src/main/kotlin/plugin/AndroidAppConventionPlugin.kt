@@ -9,23 +9,23 @@ import configuration.configureHilt
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
-public class AndroidAppConventionPlugin: Plugin<Project> {
-        override fun apply(target: Project) {
-            with(target) {
-                with(pluginManager) {
-                    apply(AppPlugin::class.java)
-                    apply(KOTLIN_ANDROID_PLUGIN_ID)
-                }
-                applyUniversalConfigurations(useGradleChecker = false)
-                configureAndroidApp()
-
-                extensions.create(
-                    "minirogue",
-                    MinirogueAndroidAppExtension::class.java,
-                    target
-                )
+public class AndroidAppConventionPlugin : Plugin<Project> {
+    override fun apply(target: Project) {
+        with(target) {
+            with(pluginManager) {
+                apply(AppPlugin::class.java)
+                apply(KOTLIN_ANDROID_PLUGIN_ID)
             }
+            applyUniversalConfigurations(useGradleChecker = false)
+            configureAndroidApp()
+
+            extensions.create(
+                "minirogue",
+                MinirogueAndroidAppExtension::class.java,
+                target,
+            )
         }
+    }
 }
 
 public open class MinirogueAndroidAppExtension(private val project: Project) {

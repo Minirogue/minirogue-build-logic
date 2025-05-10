@@ -9,7 +9,7 @@ import task.SourceType
 internal fun Project.configureKotlinMultiplatformAndroid() {
     configureAndroidLibrary()
     configureCreateSrc(SourceType.AndroidMultiplatform)
-    extensions.configure(KotlinMultiplatformExtension::class.java){
+    extensions.configure(KotlinMultiplatformExtension::class.java) {
         androidTarget {
             @OptIn(ExperimentalKotlinGradlePluginApi::class)
             instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
@@ -20,7 +20,7 @@ internal fun Project.configureKotlinMultiplatformAndroid() {
 internal fun Project.configureKotlinMultiplatformJvm() {
     configureJvm()
     configureCreateSrc(SourceType.JvmMultiplatform)
-    extensions.configure(KotlinMultiplatformExtension::class.java){
+    extensions.configure(KotlinMultiplatformExtension::class.java) {
         jvm()
     }
 }

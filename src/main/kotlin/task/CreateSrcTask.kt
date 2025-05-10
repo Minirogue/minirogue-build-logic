@@ -34,7 +34,7 @@ internal open class CreateSrcTask @Inject constructor(sourceType: SourceType) : 
     }
 
     private fun sourceDirectory(source: String): String = "src${File.separator}" +
-            "$source${File.separator}" +
-            "kotlin${File.separator}" +
-            pathToAdd
+        "$source${File.separator}" +
+        "kotlin${File.separator}" +
+        pathToAdd
 }
