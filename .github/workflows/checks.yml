@@ -25,4 +25,4 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
       - name: Gradle build and checks
-        run: ./gradlew build detekt publishToMavenLocal --continue && ./gradlew --stop
+        run: ./gradlew build detekt checkReadme publishToMavenLocal --continue && ./gradlew --stop
