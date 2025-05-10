@@ -12,7 +12,7 @@ internal fun Project.configureDummyAssembleDebugTask() {
     tasks.register("assembleDebug", DummyAssembleDebugTask::class.java) {
         group = MINIROGUE_TASK_GROUP
         description = "A dummy \"debug\" variant of the assemble task for consistent CI " +
-                "configuration across platforms"
+            "configuration across platforms"
         dependsOn("assemble")
     }
 }
