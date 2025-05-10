@@ -57,6 +57,7 @@ internal open class CreateGitHubConfigTask @Inject constructor() : DefaultTask()
                         "jvmTest " +
                         "detekt " +
                         "lint " +
+                        "checkGradleConfig " +
                         "--continue && " +
                         "./gradlew --stop",
                 )
