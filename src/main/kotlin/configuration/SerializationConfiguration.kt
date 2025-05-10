@@ -21,11 +21,11 @@ internal fun Project.configureSerialization() {
         with(dependencies) {
             add(
                 "implementation",
-                "org.jetbrains.kotlinx:kotlinx-serialization-core:$SERIALIZATION_VERSION"
+                "org.jetbrains.kotlinx:kotlinx-serialization-core:$SERIALIZATION_VERSION",
             )
             add(
                 "implementation",
-                "org.jetbrains.kotlinx:kotlinx-serialization-json:$SERIALIZATION_VERSION"
+                "org.jetbrains.kotlinx:kotlinx-serialization-json:$SERIALIZATION_VERSION",
             )
         }
     }

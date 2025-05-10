@@ -31,7 +31,7 @@ public class TestAppPlugin : Plugin<Project> {
             extensions.create(
                 "minirogue",
                 MinirogueTestAppExtension::class.java,
-                target
+                target,
             )
         }
     }
