@@ -46,6 +46,7 @@ public open class MinirogueMultiplatformLibraryExtension(private val project: Pr
     public fun kotlinCompose(): Unit = project.configureCompose()
 
     public fun serialization(): Unit = project.configureSerialization()
+
     @Deprecated("Explicit backing fields will be removed/revised in a future version of Kotlin")
     public fun explicitBackingFields(): Unit = project.extensions.configure(KotlinProjectExtension::class.java) {
         sourceSets.all {
