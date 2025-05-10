@@ -113,7 +113,7 @@ tasks.register("checkReadme").configure {
         val gitStatus = providers.exec {
             commandLine("git", "status")
         }.standardOutput.asText.get()
-        assert(gitStatus.contains("README.md")) { "README.md not up-to-date, please run ./gradlew generatePluginVersionSource (automatically run on most build jobs)" }
+        if (gitStatus.contains("README.md")) throw GradleException("README.md not up-to-date, please run ./gradlew generatePluginVersionSource (automatically run on most build jobs)")
     }
 }
 
