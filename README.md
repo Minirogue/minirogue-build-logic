@@ -59,7 +59,7 @@ As of version 0.0.9 the following dependencies and versions are used:
 - [Android Gradle Plugin (AGP)](https://developer.android.com/build/releases/gradle-plugin) = 8.9.1
 - [Compose Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-compose-1610.html) = 1.8.0-beta02
 - [Detekt](https://detekt.dev/changelog) = 1.23.8
-- [Hilt](https://github.com/google/dagger/releases) = 2.56.1
+- [Hilt](https://github.com/google/dagger/releases) = 2.56.2
 - [Java](https://www.java.com/releases/) = 17
 - [Kotlin](https://kotlinlang.org/docs/releases.html#release-details) = 2.1.20
 - [Kotlin Serialization](https://github.com/Kotlin/kotlinx.serialization/releases) = 1.8.1
