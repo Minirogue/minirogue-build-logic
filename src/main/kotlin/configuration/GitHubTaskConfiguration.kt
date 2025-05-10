@@ -3,7 +3,7 @@ package configuration
 import org.gradle.api.Project
 import task.CreateGitHubConfigTask
 
-private const val  CREATE_GITHUB_CONFIG_TASK = "createGitHubConfig"
+private const val CREATE_GITHUB_CONFIG_TASK = "createGitHubConfig"
 
 internal fun Project.configureGitHubConfigTask() {
     // Creates single instance of this task in root project
