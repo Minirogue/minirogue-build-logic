@@ -7,7 +7,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 import versions.JAVA_VERSION
 
-
 public fun Project.configureJvm() {
     extensions.configure(JavaPluginExtension::class.java) {
         sourceCompatibility = JavaVersion.toVersion(JAVA_VERSION)

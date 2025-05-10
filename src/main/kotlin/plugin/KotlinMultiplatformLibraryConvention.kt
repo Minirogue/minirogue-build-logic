@@ -24,7 +24,7 @@ public class KotlinMultiplatformLibraryConvention : Plugin<Project> {
             extensions.create(
                 "minirogue",
                 MinirogueMultiplatformLibraryExtension::class.java,
-                target
+                target,
             )
         }
     }
@@ -36,7 +36,6 @@ public open class MinirogueMultiplatformLibraryExtension(private val project: Pr
         project.configureKotlinMultiplatformAndroid()
         androidActions.execute(AndroidConfig(project))
     }
-
 
     public fun jvm(): Unit = jvm {}
     public fun jvm(jvmActions: Action<JvmConfig>) {
@@ -57,8 +56,8 @@ public open class MinirogueMultiplatformLibraryExtension(private val project: Pr
 public class AndroidConfig(private val project: Project) {
     @Deprecated("Use multiplatform \"kotlinCompose()\" configuration")
     public fun composeUi(): Unit = project.configureCompose()
-    public fun hilt() : Unit= project.configureHilt()
-    public fun room() : Unit= project.configureRoom()
+    public fun hilt(): Unit = project.configureHilt()
+    public fun room(): Unit = project.configureRoom()
     public fun viewBinding(): Unit = project.configureViewBinding()
 }
 
