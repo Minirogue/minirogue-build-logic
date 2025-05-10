@@ -28,6 +28,7 @@ java {
 detekt {
     config.setFrom(files("detekt-config.yml"))
     buildUponDefaultConfig = true
+    autoCorrect = true
 }
 
 dependencies {
@@ -40,6 +41,8 @@ dependencies {
     implementation(libs.ksp.gradlePlugin)
     implementation(libs.room.gradlePlugin)
     implementation(libs.serialization.gradlePlugin)
+
+    detektPlugins(libs.detekt.formatting)
 }
 
 gradlePlugin {

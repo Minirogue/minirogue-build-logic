@@ -4,7 +4,7 @@ import org.gradle.api.Project
 import task.CreateGitHubConfigTask
 import task.MINIROGUE_TASK_GROUP
 
-private const val  CREATE_GITHUB_CONFIG_TASK = "createGitHubConfig"
+private const val CREATE_GITHUB_CONFIG_TASK = "createGitHubConfig"
 
 internal fun Project.configureGitHubConfigTask() {
     // Creates single instance of this task in root project

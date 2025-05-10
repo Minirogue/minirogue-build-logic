@@ -15,7 +15,7 @@ internal fun Project.configureDetekt() {
     // Add formatting, which is a wrapper around ktlint
     dependencies.add(
         "detektPlugins",
-        "io.gitlab.arturbosch.detekt:detekt-formatting:$DETEKT_VERSION"
+        "io.gitlab.arturbosch.detekt:detekt-formatting:$DETEKT_VERSION",
     )
 
     if (rootProject.tasks.none { it.name == CREATE_DETEKT_CONFIG_TASK }) {
@@ -29,8 +29,8 @@ internal fun Project.configureDetekt() {
     tasks.withType(Detekt::class.java) {
         dependsOn(
             rootProject.tasks.getByName(
-                CREATE_DETEKT_CONFIG_TASK
-            )
+                CREATE_DETEKT_CONFIG_TASK,
+            ),
         )
     }
 

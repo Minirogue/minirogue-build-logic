@@ -15,7 +15,7 @@ internal open class GradleCheckerTask : DefaultTask() {
         "kotlin.sourceSets.androidInstrumentedTest.dependencies",
         "kotlin.sourceSets.commonMain.dependencies",
         "dependencies",
-        "}"
+        "}",
     )
 
     @InputFile
@@ -48,13 +48,15 @@ internal open class GradleCheckerTask : DefaultTask() {
                 // root is acceptable if it is in our allowlist
                 isRootAcceptable = isRootAcceptable || root.startsWith(it)
             }
-            if (!isRootAcceptable) throw TaskExecutionException(
-                this,
-                AssertionError(
-                    "All build.gradle lines must start with whitespace or one of $acceptableRoots\n" +
-                            "\"$root\" does not fit this paradigm"
+            if (!isRootAcceptable) {
+                throw TaskExecutionException(
+                    this,
+                    AssertionError(
+                        "All build.gradle lines must start with whitespace or one of $acceptableRoots\n" +
+                            "\"$root\" does not fit this paradigm",
+                    ),
                 )
-            )
+            }
         }
     }
 }
