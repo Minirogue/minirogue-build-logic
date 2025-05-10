@@ -2,10 +2,10 @@ package plugin
 
 import configuration.applyUniversalConfigurations
 import configuration.configureCompose
+import configuration.configureDummyAssembleDebugTask
 import configuration.configureJvm
 import configuration.configureJvmApp
 import configuration.configureSerialization
-import configuration.configureDummyAssembleDebugTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 

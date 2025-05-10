@@ -53,12 +53,12 @@ internal open class CreateGitHubConfigTask @Inject constructor() : DefaultTask()
                 println("      - name: Gradle build and checks")
                 println(
                     "        run: ./gradlew assembleDebug " +
-                            "testDebugUnitTest " +
-                            "jvmTest " +
-                            "detekt " +
-                            "lint " +
-                            "--continue && " +
-                            "./gradlew --stop"
+                        "testDebugUnitTest " +
+                        "jvmTest " +
+                        "detekt " +
+                        "lint " +
+                        "--continue && " +
+                        "./gradlew --stop",
                 )
             }
         }
@@ -77,7 +77,7 @@ internal open class CreateGitHubConfigTask @Inject constructor() : DefaultTask()
                     target-branch: "main"
                     reviewers:
                       - Minirogue
-            """.trimIndent()
+                """.trimIndent(),
             )
         }
     }
