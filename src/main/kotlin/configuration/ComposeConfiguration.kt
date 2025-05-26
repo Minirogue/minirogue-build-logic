@@ -6,12 +6,14 @@ import org.gradle.api.Project
 import org.jetbrains.compose.ComposeExtension
 import org.jetbrains.compose.ComposePlugin
 import org.jetbrains.compose.desktop.DesktopExtension
+import org.jetbrains.compose.reload.ComposeHotReloadPlugin
 import org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradleSubplugin
 import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 
-internal fun Project.configureCompose(desktopMainClass: String? = null) {
+internal fun Project.configureCompose(desktopMainClass: String? = null, useHotReload: Boolean = false) {
     pluginManager.apply(ComposeCompilerGradleSubplugin::class.java)
     pluginManager.apply(ComposePlugin::class.java)
+    if (useHotReload) pluginManager.apply(ComposeHotReloadPlugin::class.java)
     extensions.findByType(CommonExtension::class.java)?.also {
         it.buildFeatures {
             compose = true
