@@ -25,7 +25,9 @@ public class JvmAppConventionPlugin : Plugin<Project> {
 }
 
 public open class MinirogueJvmAppExtension(private val project: Project) {
-    public fun composeApp(mainClass: String): Unit = project.configureCompose(mainClass)
+    public fun composeApp(mainClass: String, useHotReload: Boolean = false): Unit =
+        project.configureCompose(desktopMainClass = mainClass, useHotReload = useHotReload)
+
     public fun jvmApp(mainClass: String): Unit = project.configureJvmApp(mainClass)
     public fun serialization(): Unit = project.configureSerialization()
 }
