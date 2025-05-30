@@ -2,7 +2,7 @@ package plugin
 
 import configuration.applyUniversalConfigurations
 import configuration.configureCompose
-import configuration.configureDummyAssembleDebugTask
+import configuration.configureDummyJvmCiTasks
 import configuration.configureJvm
 import configuration.configureJvmApp
 import configuration.configureSerialization
@@ -17,7 +17,7 @@ public class JvmAppConventionPlugin : Plugin<Project> {
             }
             applyUniversalConfigurations(useGradleChecker = false)
             configureJvm()
-            configureDummyAssembleDebugTask()
+            configureDummyJvmCiTasks()
 
             extensions.create("minirogue", MinirogueJvmAppExtension::class.java, target)
         }
