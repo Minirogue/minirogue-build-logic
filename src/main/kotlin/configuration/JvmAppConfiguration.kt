@@ -8,4 +8,5 @@ internal fun Project.configureJvmApp(mainClass: String) {
     extensions.getByType(JavaApplication::class.java).apply {
         getMainClass().set(mainClass)
     }
+
 }
