@@ -1,0 +1,35 @@
+name: Dependabot Helper
+on:
+  pull_request:
+    branches: [ "dependabot/**" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT }}
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - name: Configure git
+        run: git config --global user.name "Shawn Witte" && git config --global user.email "shawn.l.witte@gmail.com"
+      - name: Update Readme
+        run: ./gradlew generatePluginVersionSource --continue && ./gradlew --stop
+      - name: Commit and push readme changes
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+              echo "No README updates found"
+            else
+              git add README.md && git commit -m "update README.md" && git push
+            fi
