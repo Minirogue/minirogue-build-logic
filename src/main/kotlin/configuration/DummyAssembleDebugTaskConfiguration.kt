@@ -18,7 +18,7 @@ internal fun Project.configureDummyJvmCiTasks() {
     tasks.register("jvmTest", DummyAssembleDebugTask::class.java) {
         group = MINIROGUE_TASK_GROUP
         description = "A dummy \"jvm\" variant of the test task for consistent CI configuration " +
-                "across platforms"
+            "across platforms"
         dependsOn("test")
     }
 }
