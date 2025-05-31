@@ -46,16 +46,18 @@ public open class MinirogueMultiplatformLibraryExtension(private val project: Pr
 
     public fun kotlinCompose(): Unit = project.configureCompose()
 
-    public fun kotlinInjectAnvil(): Unit = project.configureKotlinInjectAndAnvil()
+    public fun kotlinInjectAnvil(kspJvm: Boolean = false, kspAndroid: Boolean = false): Unit =
+        project.configureKotlinInjectAndAnvil(kspJvm = kspJvm, kspAndroid = kspAndroid)
 
     public fun serialization(): Unit = project.configureSerialization()
 
     @Deprecated("Explicit backing fields will be removed/revised in a future version of Kotlin")
-    public fun explicitBackingFields(): Unit = project.extensions.configure(KotlinProjectExtension::class.java) {
-        sourceSets.all {
-            languageSettings.enableLanguageFeature("ExplicitBackingFields")
+    public fun explicitBackingFields(): Unit =
+        project.extensions.configure(KotlinProjectExtension::class.java) {
+            sourceSets.all {
+                languageSettings.enableLanguageFeature("ExplicitBackingFields")
+            }
         }
-    }
 }
 
 public class AndroidConfig(private val project: Project) {
