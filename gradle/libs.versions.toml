@@ -7,6 +7,8 @@ gradlePublish = "1.3.1"
 hilt = "2.56.2" # https://github.com/google/dagger/releases
 java = "17"
 kotlinLang = "2.1.21" # https://kotlinlang.org/docs/releases.html#release-details
+kotlinInject = "0.8.0"
+kotlinInjectAnvil = "0.1.6"
 ksp = "2.1.21-2.0.1" # https://github.com/google/ksp/releases
 room = "2.7.1" # https://developer.android.com/jetpack/androidx/releases/room
 serialization = "1.8.1" # https://github.com/Kotlin/kotlinx.serialization/releases
@@ -20,6 +22,8 @@ detekt-gradlePlugin = { group = "io.gitlab.arturbosch.detekt", name = "detekt-gr
 detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
 hilt-gradlePlugin = { group = "com.google.dagger", name = "hilt-android-gradle-plugin", version.ref = "hilt" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlinLang" }
+kotlininject-gradlePlugin = { group = "com.squareup.anvil", name = "anvil-gradle-plugin", version.ref = "kotlinInject" }
+kotlininject-anvil-gradlePlugin = { group = "com.squareup.anvil", name = "anvil-compiler", version.ref = "kotlinInjectAnvil" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "symbol-processing-gradle-plugin", version.ref = "ksp" }
 room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
 serialization-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-serialization", version.ref = "kotlinLang" }
