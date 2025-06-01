@@ -3,7 +3,6 @@ package plugin
 import configuration.applyUniversalConfigurations
 import configuration.configureCompose
 import configuration.configureHilt
-import configuration.configureKotlinInjectAndAnvil
 import configuration.configureKotlinMultiplatformAndroid
 import configuration.configureKotlinMultiplatformJvm
 import configuration.configureRoom
@@ -45,8 +44,6 @@ public open class MinirogueMultiplatformLibraryExtension(private val project: Pr
     }
 
     public fun kotlinCompose(): Unit = project.configureCompose()
-
-    public fun kotlinInjectAnvil(): Unit = project.configureKotlinInjectAndAnvil()
 
     public fun serialization(): Unit = project.configureSerialization()
 
