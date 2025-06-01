@@ -16,15 +16,15 @@ internal fun Project.configureRoomMultiplatform() {
         schemaDirectory("$projectDir/schemas")
     }
     kotlinExtension.sourceSets.named("commonMain") {
-        if (kotlinExtension.sourceSets.any {it.name == "androidMain"}) {
+        if (kotlinExtension.sourceSets.any { it.name == "androidMain" }) {
             dependencies.add("kspAndroid", "androidx.room:room-compiler:$ROOM_VERSION")
         }
-        if (kotlinExtension.sourceSets.any {it.name == "jvmMain"}) {
+        if (kotlinExtension.sourceSets.any { it.name == "jvmMain" }) {
             dependencies.add("kspJvm", "androidx.room:room-compiler:$ROOM_VERSION")
         }
         dependencies.add("kspCommonMainMetadata", "androidx.room:room-compiler:$ROOM_VERSION")
         dependencies {
-            implementation ("androidx.room:room-ktx:$ROOM_VERSION")
+            implementation("androidx.room:room-ktx:$ROOM_VERSION")
             implementation("androidx.room:room-runtime:$ROOM_VERSION")
         }
     }
