@@ -15,7 +15,7 @@ internal enum class SourceType {
 }
 
 /**
- * A task to automatically generate any necessary
+ * A task to automatically generate directory structures for source code
  */
 internal open class CreateSrcTask @Inject constructor(sourceType: SourceType) : DefaultTask() {
     private val pathToAdd = project.generateProjectNamespace().replace(".", File.separator)
