@@ -26,6 +26,7 @@ internal open class CreateSrcTask @Inject constructor(sourceType: SourceType) : 
         SourceType.CommonMultiplatform -> project.files(sourceDirectory("commonMain"), sourceDirectory("commonTest"))
         SourceType.AndroidMultiplatform -> project.files(
             sourceDirectory("androidMain"),
+            sourceDirectory("androidUnitTest"),
             sourceDirectory("androidInstrumentedTest"),
         )
         SourceType.JvmMultiplatform -> project.files(sourceDirectory("jvmMain"), sourceDirectory("jvmTest"))
