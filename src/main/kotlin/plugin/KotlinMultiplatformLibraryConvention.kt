@@ -6,7 +6,7 @@ import configuration.configureHilt
 import configuration.configureKotlinMultiplatformAndroid
 import configuration.configureKotlinMultiplatformJvm
 import configuration.configureMetro
-import configuration.configureRoom
+import configuration.configureRoomMultiplatform
 import configuration.configureSerialization
 import configuration.configureViewBinding
 import org.gradle.api.Action
@@ -45,9 +45,8 @@ public open class MinirogueMultiplatformLibraryExtension(private val project: Pr
     }
 
     public fun kotlinCompose(): Unit = project.configureCompose()
-
     public fun metro(): Unit = project.configureMetro()
-
+    public fun room(): Unit = project.configureRoomMultiplatform()
     public fun serialization(): Unit = project.configureSerialization()
 
     @Deprecated("Explicit backing fields will be removed/revised in a future version of Kotlin")
@@ -62,7 +61,6 @@ public class AndroidConfig(private val project: Project) {
     @Deprecated("Use multiplatform \"kotlinCompose()\" configuration")
     public fun composeUi(): Unit = project.configureCompose()
     public fun hilt(): Unit = project.configureHilt()
-    public fun room(): Unit = project.configureRoom()
     public fun viewBinding(): Unit = project.configureViewBinding()
 }
 
