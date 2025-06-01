@@ -10,6 +10,7 @@ kotlinLang = "2.1.21" # https://kotlinlang.org/docs/releases.html#release-detail
 kotlinInject = "0.8.0"
 kotlinInjectAnvil = "0.1.6"
 ksp = "2.1.21-2.0.1" # https://github.com/google/ksp/releases
+metro = "0.3.5" # https://github.com/ZacSweers/metro/releases
 room = "2.7.1" # https://developer.android.com/jetpack/androidx/releases/room
 serialization = "1.8.1" # https://github.com/Kotlin/kotlinx.serialization/releases
 
@@ -25,6 +26,7 @@ kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-pl
 kotlininject-gradlePlugin = { group = "com.squareup.anvil", name = "anvil-gradle-plugin", version.ref = "kotlinInject" }
 kotlininject-anvil-gradlePlugin = { group = "com.squareup.anvil", name = "anvil-compiler", version.ref = "kotlinInjectAnvil" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "symbol-processing-gradle-plugin", version.ref = "ksp" }
+metro-gradlePlugin = {group = "dev.zacsweers.metro", name = "gradle-plugin", version.ref = "metro"}
 room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
 serialization-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-serialization", version.ref = "kotlinLang" }
 # This dependency isn't used directly in this project, but the dependency is used in SerializationConfiguration
