@@ -40,6 +40,7 @@ dependencies {
     implementation(libs.hilt.gradlePlugin)
     implementation(libs.kotlin.gradlePlugin)
     implementation(libs.ksp.gradlePlugin)
+    implementation(libs.metro.gradlePlugin)
     implementation(libs.room.gradlePlugin)
     implementation(libs.serialization.gradlePlugin)
 
