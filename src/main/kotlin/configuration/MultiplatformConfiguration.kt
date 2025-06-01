@@ -4,6 +4,7 @@ import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import task.SourceType
 
 internal fun Project.configureKotlinMultiplatformAndroid() {
@@ -14,6 +15,9 @@ internal fun Project.configureKotlinMultiplatformAndroid() {
             @OptIn(ExperimentalKotlinGradlePluginApi::class)
             instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
         }
+    }
+    tasks.withType(KotlinCompile::class.java).all {
+        compilerOptions.freeCompilerArgs.add("-Xexpect-actual-classes")
     }
 }
 
