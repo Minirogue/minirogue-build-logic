@@ -5,6 +5,7 @@ import configuration.configureCompose
 import configuration.configureHilt
 import configuration.configureKotlinMultiplatformAndroid
 import configuration.configureKotlinMultiplatformJvm
+import configuration.configureMetro
 import configuration.configureRoom
 import configuration.configureSerialization
 import configuration.configureViewBinding
@@ -44,6 +45,8 @@ public open class MinirogueMultiplatformLibraryExtension(private val project: Pr
     }
 
     public fun kotlinCompose(): Unit = project.configureCompose()
+
+    public fun metro(): Unit = project.configureMetro()
 
     public fun serialization(): Unit = project.configureSerialization()
 

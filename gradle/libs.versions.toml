@@ -8,6 +8,7 @@ hilt = "2.56.2" # https://github.com/google/dagger/releases
 java = "17"
 kotlinLang = "2.1.21" # https://kotlinlang.org/docs/releases.html#release-details
 ksp = "2.1.21-2.0.1" # https://github.com/google/ksp/releases
+metro = "0.3.5" # https://github.com/ZacSweers/metro/releases
 room = "2.7.1" # https://developer.android.com/jetpack/androidx/releases/room
 serialization = "1.8.1" # https://github.com/Kotlin/kotlinx.serialization/releases
 
@@ -21,6 +22,7 @@ detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-form
 hilt-gradlePlugin = { group = "com.google.dagger", name = "hilt-android-gradle-plugin", version.ref = "hilt" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlinLang" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "symbol-processing-gradle-plugin", version.ref = "ksp" }
+metro-gradlePlugin = {group = "dev.zacsweers.metro", name = "gradle-plugin", version.ref = "metro"}
 room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
 serialization-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-serialization", version.ref = "kotlinLang" }
 # This dependency isn't used directly in this project, but the dependency is used in SerializationConfiguration
