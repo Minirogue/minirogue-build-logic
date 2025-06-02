@@ -7,7 +7,7 @@ import task.MINIROGUE_TASK_GROUP
 import task.SourceType
 
 internal fun Project.configureCreateSrc(srcType: SourceType) {
-    tasks.findByName("clearEmptyDirs") ?: tasks.register(
+    rootProject.tasks.findByName("clearEmptyDirs") ?: rootProject.tasks.register(
         "clearEmptyDirs",
         ClearEmptyDirectoryTask::class.java,
     ) {
