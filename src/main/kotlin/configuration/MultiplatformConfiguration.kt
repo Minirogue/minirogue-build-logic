@@ -28,3 +28,11 @@ internal fun Project.configureKotlinMultiplatformJvm() {
         jvm()
     }
 }
+
+internal fun Project.configureKotlinMultiplatformIOS() {
+    configureCreateSrc(SourceType.IosMultiplatform)
+    extensions.configure(KotlinMultiplatformExtension::class.java) {
+        iosX64()
+        iosArm64()
+    }
+}

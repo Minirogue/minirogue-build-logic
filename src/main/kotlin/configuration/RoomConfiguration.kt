@@ -24,7 +24,6 @@ internal fun Project.configureRoomMultiplatform() {
         }
         dependencies.add("kspCommonMainMetadata", "androidx.room:room-compiler:$ROOM_VERSION")
         dependencies {
-            implementation("androidx.room:room-ktx:$ROOM_VERSION")
             implementation("androidx.room:room-runtime:$ROOM_VERSION")
         }
     }
