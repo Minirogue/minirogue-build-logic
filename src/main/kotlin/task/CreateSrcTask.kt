@@ -11,6 +11,7 @@ internal enum class SourceType {
     SinglePlatform,
     CommonMultiplatform,
     AndroidMultiplatform,
+    IosMultiplatform,
     JvmMultiplatform,
 }
 
@@ -30,6 +31,7 @@ internal open class CreateSrcTask @Inject constructor(sourceType: SourceType) : 
             sourceDirectory("androidInstrumentedTest"),
         )
         SourceType.JvmMultiplatform -> project.files(sourceDirectory("jvmMain"), sourceDirectory("jvmTest"))
+        SourceType.IosMultiplatform -> project.files(sourceDirectory("iosMain"), sourceDirectory("iosTest"))
     }
 
     @TaskAction

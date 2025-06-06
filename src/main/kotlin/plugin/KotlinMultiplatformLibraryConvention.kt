@@ -4,6 +4,7 @@ import configuration.applyUniversalConfigurations
 import configuration.configureCompose
 import configuration.configureHilt
 import configuration.configureKotlinMultiplatformAndroid
+import configuration.configureKotlinMultiplatformIOS
 import configuration.configureKotlinMultiplatformJvm
 import configuration.configureMetro
 import configuration.configureRoomMultiplatform
@@ -38,6 +39,8 @@ public open class MinirogueMultiplatformLibraryExtension(private val project: Pr
         androidActions.execute(AndroidConfig(project))
     }
 
+    public fun ios(): Unit = project.configureKotlinMultiplatformIOS()
+
     public fun jvm(): Unit = jvm {}
     public fun jvm(jvmActions: Action<JvmConfig>) {
         project.configureKotlinMultiplatformJvm()
@@ -50,11 +53,12 @@ public open class MinirogueMultiplatformLibraryExtension(private val project: Pr
     public fun serialization(): Unit = project.configureSerialization()
 
     @Deprecated("Explicit backing fields will be removed/revised in a future version of Kotlin")
-    public fun explicitBackingFields(): Unit = project.extensions.configure(KotlinProjectExtension::class.java) {
-        sourceSets.all {
-            languageSettings.enableLanguageFeature("ExplicitBackingFields")
+    public fun explicitBackingFields(): Unit =
+        project.extensions.configure(KotlinProjectExtension::class.java) {
+            sourceSets.all {
+                languageSettings.enableLanguageFeature("ExplicitBackingFields")
+            }
         }
-    }
 }
 
 public class AndroidConfig(private val project: Project) {
