@@ -27,6 +27,7 @@ jobs:
         run: ./gradlew generatePluginVersionSource --continue && ./gradlew --stop
       - name: Commit and push readme changes
         run: |
+          echo "git status porcelain: $(git status --porcelain)"
           if [ -z "$(git status --porcelain)" ]; then
               echo "No README updates found"
             else
