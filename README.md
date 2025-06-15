@@ -61,7 +61,7 @@ As of version 0.0.15 the following dependencies and versions are used:
 - [ComposeMultiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-compose-1610.html) = 1.8.1
 - [Detekt](https://detekt.dev/changelog) = 1.23.8
 - [Hilt](https://github.com/google/dagger/releases) = 2.56.2
-- [HotReload](https://github.com/JetBrains/compose-hot-reload/releases) = 1.0.0-alpha10
+- [HotReload](https://github.com/JetBrains/compose-hot-reload/releases) = 1.0.0-alpha11
 - [Java](https://www.java.com/releases/) = 17
 - [Kotlin](https://kotlinlang.org/docs/releases.html#release-details) = 2.1.21
 - [Kotlin Serialization](https://github.com/Kotlin/kotlinx.serialization/releases) = 1.8.1
