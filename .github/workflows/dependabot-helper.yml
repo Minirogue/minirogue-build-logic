@@ -1,13 +1,14 @@
 name: Dependabot Helper
 on:
-  pull_request_target:
-    types: [ opened,synchronize ]
+  push:
+    branches: [ "dependabot/**" ]
 jobs:
-  run_if:
-    if: startsWith(github.head_ref, 'dependabot')
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT }}
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -22,10 +23,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
       - name: Configure git
-        run: |
-          git config --global user.name "Shawn Witte" &&
-          git config --global user.email "shawn.l.witte@gmail.com" &&
-          git config --global --add safe.directory {{ github.workspace }}
+        run: git config --global user.name "Shawn Witte" && git config --global user.email "shawn.l.witte@gmail.com"
       - name: Update Readme
         run: ./gradlew generatePluginVersionSource --continue && ./gradlew --stop
       - name: Commit and push readme changes
