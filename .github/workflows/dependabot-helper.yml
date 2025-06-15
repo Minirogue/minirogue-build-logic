@@ -1,10 +1,9 @@
 name: Dependabot Helper
 on:
-  pull_request_target:
-    types: [ opened,synchronize ]
+  push:
+    branches: [ "dependabot/**" ]
 jobs:
-  update:
-    if: startsWith(github.head_ref, 'dependabot')
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,15 +23,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
       - name: Configure git
-        run: git config --global user.name "Shawn Witte" && git config --global user.email "shawn.l.witte@gmail.com" && git config --global --add safe.directory "$GITHUB_WORKSPACE"
+        run: git config --global user.name "Shawn Witte" && git config --global user.email "shawn.l.witte@gmail.com"
       - name: Update Readme
-        run: |
-          ./gradlew generatePluginVersionSource --continue && 
-          ./gradlew --stop && 
-          echo "update step status: $(git status)"
+        run: ./gradlew generatePluginVersionSource --continue && ./gradlew --stop
       - name: Commit and push readme changes
         run: |
-          echo "git status: $(git status)"
           if [ -z "$(git status --porcelain)" ]; then
               echo "No README updates found"
             else
