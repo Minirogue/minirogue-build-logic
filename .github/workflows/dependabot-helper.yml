@@ -22,7 +22,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
       - name: Configure git
-        run: git config --global user.name "Shawn Witte" && git config --global user.email "shawn.l.witte@gmail.com" && git config --global --add safe.directory {{ github.workspace }}
+        run: git config --global user.name "Shawn Witte" && git config --global user.email "shawn.l.witte@gmail.com" && git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Update Readme
         run: ./gradlew generatePluginVersionSource --continue && ./gradlew --stop
       - name: Commit and push readme changes
