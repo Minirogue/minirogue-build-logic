@@ -32,16 +32,17 @@ internal fun Project.configureKotlinMultiplatformJvm() {
 internal fun Project.configureKotlinMultiplatformIOS() {
     configureCreateSrc(SourceType.IosMultiplatform)
     extensions.configure(KotlinMultiplatformExtension::class.java) {
-        listOf(iosX64(), iosArm64()).forEach {
+        listOf(iosX64(), iosArm64(),iosSimulatorArm64()).forEach {
             it.binaries.framework {
-                baseName = project.name
-                isStatic = true // to get iosMain to work???
+                baseName = (project.parent?.name ?: "") + project.name
+                isStatic = true
             }
         }
         sourceSets.create("iosMain") {
             dependsOn(sourceSets.commonMain.get())
             sourceSets.iosX64Main.get().dependsOn(this)
             sourceSets.iosArm64Main.get().dependsOn(this)
+            sourceSets.iosSimulatorArm64Main.get().dependsOn(this)
         }
     }
 }
