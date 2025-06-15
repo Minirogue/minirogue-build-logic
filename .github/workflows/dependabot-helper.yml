@@ -26,7 +26,10 @@ jobs:
       - name: Configure git
         run: git config --global user.name "Shawn Witte" && git config --global user.email "shawn.l.witte@gmail.com" && git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Update Readme
-        run: ./gradlew generatePluginVersionSource --continue && ./gradlew --stop
+        run: |
+          ./gradlew generatePluginVersionSource --continue && 
+          ./gradlew --stop && 
+          echo "update step status: $(git status)"
       - name: Commit and push readme changes
         run: |
           echo "git status: $(git status)"
