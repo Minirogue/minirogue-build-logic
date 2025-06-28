@@ -25,11 +25,11 @@ jobs:
       - name: Configure git
         run: git config --global user.name "Shawn Witte" && git config --global user.email "shawn.l.witte@gmail.com"
       - name: Detekt Lint Readme
-        run: ./gradlew generatePluginVersionSource detekt lint --continue && ./gradlew --stop
+        run: ./gradlew generatePluginVersionSource detekt --continue && ./gradlew --stop
       - name: Commit and push automated fixes
         run: |
           if [ -z "$(git status --porcelain)" ]; then
-              echo "No README updates found"
+              echo "Nothing to automatically fix"
             else
-              git add README.md && git commit -m "update README.md" && git push
+              git add . && git commit -m "automated fixes" && git push
             fi
