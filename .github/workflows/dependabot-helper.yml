@@ -1,7 +1,7 @@
-name: Dependabot Helper
+name: Automated Fixes
 on:
-  push:
-    branches: [ "dependabot/**" ]
+  pull_request:
+    branches: [ "main" ]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,9 +24,9 @@ jobs:
             ${{ runner.os }}-gradle-
       - name: Configure git
         run: git config --global user.name "Shawn Witte" && git config --global user.email "shawn.l.witte@gmail.com"
-      - name: Update Readme
-        run: ./gradlew generatePluginVersionSource --continue && ./gradlew --stop
-      - name: Commit and push readme changes
+      - name: Detekt Lint Readme
+        run: ./gradlew generatePluginVersionSource detekt lint --continue && ./gradlew --stop
+      - name: Commit and push automated fixes
         run: |
           if [ -z "$(git status --porcelain)" ]; then
               echo "No README updates found"
