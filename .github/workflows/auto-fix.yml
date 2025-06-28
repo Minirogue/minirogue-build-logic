@@ -24,7 +24,7 @@ jobs:
             ${{ runner.os }}-gradle-
       - name: Configure git
         run: git config --global user.name "Shawn Witte" && git config --global user.email "shawn.l.witte@gmail.com"
-      - name: Detekt Lint Readme
+      - name: Detekt Readme
         run: ./gradlew generatePluginVersionSource detekt --continue && ./gradlew --stop
       - name: Commit and push automated fixes
         run: |
