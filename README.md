@@ -63,10 +63,10 @@ As of version 0.0.15 the following dependencies and versions are used:
 - [Hilt](https://github.com/google/dagger/releases) = 2.56.2
 - [HotReload](https://github.com/JetBrains/compose-hot-reload/releases) = 1.0.0-alpha11
 - [Java](https://www.java.com/releases/) = 21
-- [Kotlin](https://kotlinlang.org/docs/releases.html#release-details) = 2.1.21
+- [Kotlin](https://kotlinlang.org/docs/releases.html#release-details) = 2.2.0
 - [Kotlin Serialization](https://github.com/Kotlin/kotlinx.serialization/releases) = 1.8.1
 - [Kotlin Symbol Processing](https://github.com/google/ksp/releases) = 2.1.21-2.0.2
-- [Metro](https://github.com/ZacSweers/metro/releases) = 0.3.7
+- [Metro](https://github.com/ZacSweers/metro/releases) = 0.4.0
 - [Room](https://developer.android.com/jetpack/androidx/releases/room) = 2.7.1
 
 Note: if using compose hot reload (compose desktop only), then also include the following in settings.gradle:
