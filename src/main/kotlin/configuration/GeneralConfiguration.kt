@@ -13,7 +13,7 @@ internal fun Project.applyUniversalConfigurations(useGradleChecker: Boolean = tr
     configureGitHubConfigTask()
     configureCreateSrc(if (isMultiplatform()) SourceType.CommonMultiplatform else SourceType.SinglePlatform)
     tasks.withType(KotlinCompile::class.java).all {
-        compilerOptions.freeCompilerArgs.add("-Xcontext-receivers")
+        compilerOptions.freeCompilerArgs.add("-Xcontext-parameters")
     }
 }
 
