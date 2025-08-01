@@ -6,7 +6,7 @@ import org.gradle.api.Project
 import org.jetbrains.compose.ComposeExtension
 import org.jetbrains.compose.ComposePlugin
 import org.jetbrains.compose.desktop.DesktopExtension
-import org.jetbrains.compose.reload.ComposeHotReloadPlugin
+import org.jetbrains.compose.reload.gradle.ComposeHotReloadPlugin
 import org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradleSubplugin
 import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 
