@@ -43,9 +43,9 @@ Then the following plugins may be used for any gradle modules contained in the p
 Then you may use the `minirogue` extension in the `build.gradle` file using the plugin to configure it:
 ```groovy
 minirogue {
-    android {
-        hilt()
-    }
+    android()
+    ios()
+    metro()
 }
 ```
 
@@ -60,7 +60,6 @@ As of version 0.0.17 the following dependencies and versions are used:
 - [Android Gradle Plugin (AGP)](https://developer.android.com/build/releases/gradle-plugin) = 8.12.0
 - [ComposeMultiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-compose-1610.html) = 1.8.2
 - [Detekt](https://detekt.dev/changelog) = 1.23.8
-- [Hilt](https://github.com/google/dagger/releases) = 2.56.2
 - [HotReload](https://github.com/JetBrains/compose-hot-reload/releases) = 1.0.0-alpha11
 - [Java](https://www.java.com/releases/) = 21
 - [Kotlin](https://kotlinlang.org/docs/releases.html#release-details) = 2.2.0
