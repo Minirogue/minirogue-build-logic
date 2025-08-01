@@ -51,19 +51,9 @@ public open class MinirogueMultiplatformLibraryExtension(private val project: Pr
     public fun metro(): Unit = project.configureMetro()
     public fun room(): Unit = project.configureRoomMultiplatform()
     public fun serialization(): Unit = project.configureSerialization()
-
-    @Deprecated("Explicit backing fields will be removed/revised in a future version of Kotlin")
-    public fun explicitBackingFields(): Unit =
-        project.extensions.configure(KotlinProjectExtension::class.java) {
-            sourceSets.all {
-                languageSettings.enableLanguageFeature("ExplicitBackingFields")
-            }
-        }
 }
 
 public class AndroidConfig(private val project: Project) {
-    @Deprecated("Use multiplatform \"kotlinCompose()\" configuration")
-    public fun composeUi(): Unit = project.configureCompose()
     public fun hilt(): Unit = project.configureHilt()
     public fun viewBinding(): Unit = project.configureViewBinding()
 }
