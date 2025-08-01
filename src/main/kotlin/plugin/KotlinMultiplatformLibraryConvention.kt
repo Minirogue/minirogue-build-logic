@@ -2,7 +2,6 @@ package plugin
 
 import configuration.applyUniversalConfigurations
 import configuration.configureCompose
-import configuration.configureHilt
 import configuration.configureKotlinMultiplatformAndroid
 import configuration.configureKotlinMultiplatformIOS
 import configuration.configureKotlinMultiplatformJvm
@@ -64,7 +63,6 @@ public open class MinirogueMultiplatformLibraryExtension(private val project: Pr
 public class AndroidConfig(private val project: Project) {
     @Deprecated("Use multiplatform \"kotlinCompose()\" configuration")
     public fun composeUi(): Unit = project.configureCompose()
-    public fun hilt(): Unit = project.configureHilt()
     public fun viewBinding(): Unit = project.configureViewBinding()
 }
 
