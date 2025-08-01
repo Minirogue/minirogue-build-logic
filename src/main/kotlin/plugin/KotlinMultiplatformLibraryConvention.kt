@@ -8,11 +8,9 @@ import configuration.configureKotlinMultiplatformJvm
 import configuration.configureMetro
 import configuration.configureRoomMultiplatform
 import configuration.configureSerialization
-import configuration.configureViewBinding
 import org.gradle.api.Action
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
 
 public class KotlinMultiplatformLibraryConvention : Plugin<Project> {
     override fun apply(target: Project) {
@@ -32,38 +30,18 @@ public class KotlinMultiplatformLibraryConvention : Plugin<Project> {
 }
 
 public open class MinirogueMultiplatformLibraryExtension(private val project: Project) {
-    public fun android(): Unit = android {}
-    public fun android(androidActions: Action<AndroidConfig>) {
-        project.configureKotlinMultiplatformAndroid()
-        androidActions.execute(AndroidConfig(project))
-    }
-
-    public fun ios(): Unit = project.configureKotlinMultiplatformIOS()
-
-    public fun jvm(): Unit = jvm {}
-    public fun jvm(jvmActions: Action<JvmConfig>) {
-        project.configureKotlinMultiplatformJvm()
-        jvmActions.execute(JvmConfig((project)))
+    public fun platforms(action: Action<PlatformConfig>) {
+        action.execute(PlatformConfig(project))
     }
 
     public fun kotlinCompose(): Unit = project.configureCompose()
     public fun metro(): Unit = project.configureMetro()
     public fun room(): Unit = project.configureRoomMultiplatform()
     public fun serialization(): Unit = project.configureSerialization()
-
-    @Deprecated("Explicit backing fields will be removed/revised in a future version of Kotlin")
-    public fun explicitBackingFields(): Unit =
-        project.extensions.configure(KotlinProjectExtension::class.java) {
-            sourceSets.all {
-                languageSettings.enableLanguageFeature("ExplicitBackingFields")
-            }
-        }
 }
 
-public class AndroidConfig(private val project: Project) {
-    @Deprecated("Use multiplatform \"kotlinCompose()\" configuration")
-    public fun composeUi(): Unit = project.configureCompose()
-    public fun viewBinding(): Unit = project.configureViewBinding()
+public class PlatformConfig(private val project: Project) {
+    public fun android(): Unit = project.configureKotlinMultiplatformAndroid()
+    public fun ios(): Unit = project.configureKotlinMultiplatformIOS()
+    public fun jvm(): Unit = project.configureKotlinMultiplatformJvm()
 }
-
-public class JvmConfig(private val project: Project)
