@@ -37,7 +37,6 @@ dependencies {
     implementation(libs.compose.compilerGradlePlugin)
     implementation(libs.compose.hotReloadGradlePlugin)
     implementation(libs.detekt.gradlePlugin)
-    implementation(libs.hilt.gradlePlugin)
     implementation(libs.kotlin.gradlePlugin)
     implementation(libs.ksp.gradlePlugin)
     implementation(libs.metro.gradlePlugin)
