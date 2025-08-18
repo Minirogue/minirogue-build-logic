@@ -62,9 +62,9 @@ As of version 0.1.1 the following dependencies and versions are used:
 - [Detekt](https://detekt.dev/changelog) = 1.23.8
 - [HotReload](https://github.com/JetBrains/compose-hot-reload/releases) = 1.0.0-beta04
 - [Java](https://www.java.com/releases/) = 21
-- [Kotlin](https://kotlinlang.org/docs/releases.html#release-details) = 2.2.0
+- [Kotlin](https://kotlinlang.org/docs/releases.html#release-details) = 2.2.10
 - [Kotlin Serialization](https://github.com/Kotlin/kotlinx.serialization/releases) = 1.9.0
-- [Kotlin Symbol Processing](https://github.com/google/ksp/releases) = 2.2.0-2.0.2
+- [Kotlin Symbol Processing](https://github.com/google/ksp/releases) = 2.2.10-2.0.2
 - [Metro](https://github.com/ZacSweers/metro/releases) = 0.5.3
 - [Room](https://developer.android.com/jetpack/androidx/releases/room) = 2.7.2
 
