@@ -12,9 +12,9 @@ import org.gradle.api.Project
 import org.gradle.process.internal.ExecException
 import versions.JAVA_VERSION
 
-private const val MIN_SDK = 21
-private const val COMPILE_SDK = 35
-private const val TARGET_SDK = 35
+private const val MIN_SDK = 23
+private const val COMPILE_SDK = 36
+private const val TARGET_SDK = 36
 
 internal fun Project.configureAndroidLibrary() {
     with(pluginManager) { apply(LibraryPlugin::class.java) }
