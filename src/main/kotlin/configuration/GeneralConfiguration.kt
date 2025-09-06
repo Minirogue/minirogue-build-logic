@@ -2,7 +2,7 @@ package configuration
 
 import ext.isMultiplatform
 import org.gradle.api.Project
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 import task.GradleCheckerTask
 import task.MINIROGUE_TASK_GROUP
 import task.SourceType
@@ -12,8 +12,11 @@ internal fun Project.applyUniversalConfigurations(useGradleChecker: Boolean = tr
     configureDetekt()
     configureGitHubConfigTask()
     configureCreateSrc(if (isMultiplatform()) SourceType.CommonMultiplatform else SourceType.SinglePlatform)
-    tasks.withType(KotlinCompile::class.java).all {
-        compilerOptions.freeCompilerArgs.add("-Xcontext-parameters")
+    tasks.withType(KotlinCompilationTask::class.java) {
+        compilerOptions {
+            freeCompilerArgs.add("-Xcontext-parameters")
+            freeCompilerArgs.add("-Xexpect-actual-classes")
+        }
     }
 }
 
