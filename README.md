@@ -65,7 +65,7 @@ As of version 0.1.3 the following dependencies and versions are used:
 - [Kotlin](https://kotlinlang.org/docs/releases.html#release-details) = 2.2.10
 - [Kotlin Serialization](https://github.com/Kotlin/kotlinx.serialization/releases) = 1.9.0
 - [Kotlin Symbol Processing](https://github.com/google/ksp/releases) = 2.2.10-2.0.2
-- [Metro](https://github.com/ZacSweers/metro/releases) = 0.6.3
+- [Metro](https://github.com/ZacSweers/metro/releases) = 0.6.4
 - [Room](https://developer.android.com/jetpack/androidx/releases/room) = 2.7.2
 
 Note: if using compose hot reload (compose desktop only), then also include the following in settings.gradle:
