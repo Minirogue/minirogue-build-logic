@@ -38,11 +38,5 @@ internal fun Project.configureKotlinMultiplatformIOS() {
                 isStatic = true
             }
         }
-        sourceSets.create("iosMain") {
-            dependsOn(sourceSets.commonMain.get())
-            sourceSets.iosX64Main.get().dependsOn(this)
-            sourceSets.iosArm64Main.get().dependsOn(this)
-            sourceSets.iosSimulatorArm64Main.get().dependsOn(this)
-        }
     }
 }

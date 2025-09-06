@@ -11,6 +11,7 @@ import configuration.configureSerialization
 import org.gradle.api.Action
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 public class KotlinMultiplatformLibraryConvention : Plugin<Project> {
     override fun apply(target: Project) {
@@ -32,6 +33,9 @@ public class KotlinMultiplatformLibraryConvention : Plugin<Project> {
 public open class MinirogueMultiplatformLibraryExtension(private val project: Project) {
     public fun platforms(action: Action<PlatformConfig>) {
         action.execute(PlatformConfig(project))
+        project.extensions.configure(KotlinMultiplatformExtension::class.java) {
+            applyDefaultHierarchyTemplate() // adds iosMain source set
+        }
     }
 
     public fun kotlinCompose(): Unit = project.configureCompose()
