@@ -8,7 +8,7 @@ java = "21"
 kotlinLang = "2.2.10" # https://kotlinlang.org/docs/releases.html#release-details
 ksp = "2.2.10-2.0.2" # https://github.com/google/ksp/releases
 metro = "0.6.4" # https://github.com/ZacSweers/metro/releases
-room = "2.7.2" # https://developer.android.com/jetpack/androidx/releases/room
+room = "2.8.0" # https://developer.android.com/jetpack/androidx/releases/room
 serialization = "1.9.0" # https://github.com/Kotlin/kotlinx.serialization/releases
 
 [libraries]
