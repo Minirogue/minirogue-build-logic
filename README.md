@@ -57,7 +57,7 @@ I will add a list here of repos that I have which use the build logic defined in
 This repo manages several dependencies (namely ones that have related gradle plugins) that will be inherited by any projects that consume it.
 As of version 0.1.5 the following dependencies and versions are used:
 
-- [Android Gradle Plugin (AGP)](https://developer.android.com/build/releases/gradle-plugin) = 8.12.2
+- [Android Gradle Plugin (AGP)](https://developer.android.com/build/releases/gradle-plugin) = 8.13.0
 - [ComposeMultiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-compose-1610.html) = 1.8.2
 - [Detekt](https://detekt.dev/changelog) = 1.23.8
 - [HotReload](https://github.com/JetBrains/compose-hot-reload/releases) = 1.0.0-beta06
