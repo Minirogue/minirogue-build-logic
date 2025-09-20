@@ -8,25 +8,26 @@ import task.SourceType
 
 internal fun Project.configureKotlinMultiplatformAndroid() {
     configureAndroidLibrary()
-    configureCreateSrc(SourceType.AndroidMultiplatform)
     extensions.configure(KotlinMultiplatformExtension::class.java) {
         androidTarget {
             @OptIn(ExperimentalKotlinGradlePluginApi::class)
             instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
         }
     }
+    configureCreateSrc(SourceType.AndroidMultiplatform)
+    configureTest(SourceType.AndroidMultiplatform)
 }
 
 internal fun Project.configureKotlinMultiplatformJvm() {
     configureJvm()
-    configureCreateSrc(SourceType.JvmMultiplatform)
     extensions.configure(KotlinMultiplatformExtension::class.java) {
         jvm()
     }
+    configureCreateSrc(SourceType.JvmMultiplatform)
+    configureTest(SourceType.JvmMultiplatform)
 }
 
 internal fun Project.configureKotlinMultiplatformIOS() {
-    configureCreateSrc(SourceType.IosMultiplatform)
     extensions.configure(KotlinMultiplatformExtension::class.java) {
         listOf(iosX64(), iosArm64(), iosSimulatorArm64()).forEach {
             it.binaries.framework {
@@ -35,4 +36,6 @@ internal fun Project.configureKotlinMultiplatformIOS() {
             }
         }
     }
+    configureCreateSrc(SourceType.IosMultiplatform)
+//    configureTest(SourceType.IosMultiplatform) TODO
 }
