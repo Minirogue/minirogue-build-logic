@@ -40,7 +40,7 @@ internal fun Project.configureDetekt() {
             "src/androidMain", "src/androidUnitTest", "src/androidInstrumentedTest",
             "src/commonMain", "src/commonTest",
             "src/jvmMain", "src/jvmTest",
-            "src/iosMain", "src/iosTest"
+            "src/iosMain", "src/iosTest",
         )
         config.setFrom(files(rootProject.tasks.getByName(CREATE_DETEKT_CONFIG_TASK)))
         buildUponDefaultConfig = true
