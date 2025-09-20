@@ -1,5 +1,5 @@
 [versions]
-agp = "8.12.2" # https://developer.android.com/reference/tools/gradle-api
+agp = "8.13.0" # https://developer.android.com/reference/tools/gradle-api
 composeMultiplatform = "1.8.2" # https://github.com/JetBrains/compose-multiplatform/releases
 hotReload = "1.0.0-beta06" # https://github.com/JetBrains/compose-hot-reload/releases
 detekt = "1.23.8" # https://github.com/detekt/detekt/releases
@@ -8,7 +8,7 @@ java = "21"
 kotlinLang = "2.2.20" # https://kotlinlang.org/docs/releases.html#release-details
 ksp = "2.2.20-2.0.3" # https://github.com/google/ksp/releases
 metro = "0.6.4" # https://github.com/ZacSweers/metro/releases
-room = "2.7.2" # https://developer.android.com/jetpack/androidx/releases/room
+room = "2.8.0" # https://developer.android.com/jetpack/androidx/releases/room
 serialization = "1.9.0" # https://github.com/Kotlin/kotlinx.serialization/releases
 
 [libraries]
