@@ -8,7 +8,7 @@ internal fun Project.configureTest(sourceType: SourceType) {
     when (sourceType) {
         SourceType.SinglePlatform -> logger.warn(
             "test configuration for SourceType.SinglePlatform not implemented",
-            IllegalArgumentException()
+            IllegalArgumentException(),
         )
 
         SourceType.CommonMultiplatform -> {
@@ -30,7 +30,7 @@ internal fun Project.configureTest(sourceType: SourceType) {
 
         SourceType.IosMultiplatform -> logger.warn(
             "This version of build logic does not yet support iOS test configuration",
-            IllegalArgumentException()
+            IllegalArgumentException(),
         )
 
         SourceType.JvmMultiplatform -> {
