@@ -8,10 +8,12 @@ import configuration.configureKotlinMultiplatformJvm
 import configuration.configureMetro
 import configuration.configureRoomMultiplatform
 import configuration.configureSerialization
+import configuration.configureTest
 import org.gradle.api.Action
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
+import task.SourceType
 
 public class KotlinMultiplatformLibraryConvention : Plugin<Project> {
     override fun apply(target: Project) {
@@ -20,6 +22,7 @@ public class KotlinMultiplatformLibraryConvention : Plugin<Project> {
                 apply("org.jetbrains.kotlin.multiplatform")
             }
             applyUniversalConfigurations()
+            configureTest(SourceType.CommonMultiplatform)
 
             extensions.create(
                 "minirogue",
