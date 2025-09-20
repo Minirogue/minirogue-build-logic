@@ -27,7 +27,7 @@ jobs:
       - name: Configure git
         run: git config --global user.name "Shawn Witte" && git config --global user.email "shawn.l.witte@gmail.com"
       - name: Detekt Readme
-        run: ./gradlew generatePluginVersionSource detekt --continue && ./gradlew --stop
+        run: (./gradlew generatePluginVersionSource detekt --continue || true) && ./gradlew --stop
       - name: Commit and push automated fixes
         run: |
           if [ -z "$(git status --porcelain)" ]; then

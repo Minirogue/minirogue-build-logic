@@ -35,7 +35,13 @@ internal fun Project.configureDetekt() {
     }
 
     extensions.configure(DetektExtension::class.java) {
-        source.setFrom("src/main", "src/androidMain", "src/commonMain", "src/jvmMain")
+        source.setFrom(
+            "src/main",
+            "src/androidMain", "src/androidUnitTest", "src/androidInstrumentedTest",
+            "src/commonMain", "src/commonTest",
+            "src/jvmMain", "src/jvmTest",
+            "src/iosMain", "src/iosTest",
+        )
         config.setFrom(files(rootProject.tasks.getByName(CREATE_DETEKT_CONFIG_TASK)))
         buildUponDefaultConfig = true
         autoCorrect = true

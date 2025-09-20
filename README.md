@@ -57,16 +57,16 @@ I will add a list here of repos that I have which use the build logic defined in
 This repo manages several dependencies (namely ones that have related gradle plugins) that will be inherited by any projects that consume it.
 As of version 0.1.6 the following dependencies and versions are used:
 
-- [Android Gradle Plugin (AGP)](https://developer.android.com/build/releases/gradle-plugin) = 8.12.2
+- [Android Gradle Plugin (AGP)](https://developer.android.com/build/releases/gradle-plugin) = 8.13.0
 - [ComposeMultiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-compose-1610.html) = 1.8.2
 - [Detekt](https://detekt.dev/changelog) = 1.23.8
 - [HotReload](https://github.com/JetBrains/compose-hot-reload/releases) = 1.0.0-beta06
 - [Java](https://www.java.com/releases/) = 21
-- [Kotlin](https://kotlinlang.org/docs/releases.html#release-details) = 2.2.10
+- [Kotlin](https://kotlinlang.org/docs/releases.html#release-details) = 2.2.20
 - [Kotlin Serialization](https://github.com/Kotlin/kotlinx.serialization/releases) = 1.9.0
-- [Kotlin Symbol Processing](https://github.com/google/ksp/releases) = 2.2.10-2.0.2
-- [Metro](https://github.com/ZacSweers/metro/releases) = 0.6.4
-- [Room](https://developer.android.com/jetpack/androidx/releases/room) = 2.7.2
+- [Kotlin Symbol Processing](https://github.com/google/ksp/releases) = 2.2.20-2.0.3
+- [Metro](https://github.com/ZacSweers/metro/releases) = 0.6.6
+- [Room](https://developer.android.com/jetpack/androidx/releases/room) = 2.8.0
 
 Note: if using compose hot reload (compose desktop only), then also include the following in settings.gradle:
 ```
