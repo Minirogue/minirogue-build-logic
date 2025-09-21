@@ -7,8 +7,8 @@ plugins {
     alias(libs.plugins.detekt)
 }
 
-group = "org.minirogue"
-version = "0.1.6"
+group = "io.github.minirogue"
+version = "0.2.0"
 
 kotlin {
     explicitApiWarning()
@@ -47,21 +47,39 @@ dependencies {
 }
 
 gradlePlugin {
+    website = "https://github.com/Minirogue/minirogue-build-logic"
+    vcsUrl = "https://github.com/Minirogue/minirogue-build-logic.git"
+
+    val conventionTag = "convention"
+
     plugins {
         register("multiplatformLibrary") {
-            id = "minirogue.multiplatform.library"
+            id = "io.github.minirogue.multiplatform.library"
+            displayName = "Minirogue multiplatform library module convention plugin"
+            description = "Use this to configure a multiplatform module."
+            tags = listOf(conventionTag)
             implementationClass = "plugin.KotlinMultiplatformLibraryConvention"
         }
         register("testApp") {
-            id = "minirogue.test.app"
+            id = "io.github.minirogue.test.app"
+            displayName = "Minirogue Android test app convention plugin"
+            description =
+                "Use this to configure an Android application module for limited testing (not yet fully supported)"
+            tags = listOf(conventionTag)
             implementationClass = "plugin.TestAppPlugin"
         }
         register("androidApp") {
-            id = "minirogue.android.app"
+            id = "io.github.minirogue.android.app"
+            displayName = "Minirogue Android app convention plugin"
+            description = "Use this for an Android application module"
+            tags = listOf(conventionTag)
             implementationClass = "plugin.AndroidAppConventionPlugin"
         }
         register("jvmApp") {
-            id = "minirogue.jvm.app"
+            id = "io.github.minirogue.jvm.app"
+            displayName = "Minirogue Compose JVM Desktop app convention plugin"
+            description = "Use this for a Compose Desktop JVM application module"
+            tags = listOf(conventionTag)
             implementationClass = "plugin.JvmAppConventionPlugin"
         }
     }

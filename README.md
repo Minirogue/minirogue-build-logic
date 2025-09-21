@@ -6,25 +6,10 @@ This repo stores the common build logic that is shared by my personal projects.
 ### Importing the build logic
 This section assumes that the consuming project is a gradle project using a version catalog.
 
-Ensure that the following is in the consuming project's `settings.gradle` file:
-```groovy
-pluginManagement {
-    resolutionStrategy {
-        eachPlugin {
-            if (requested.id.toString() == "com.github.minirogue")
-                useModule("com.github.minirogue:minirogue-build-logic:$requested.version")
-        }
-    }
-    repositories {
-        maven { url "https://jitpack.io" }
-    }
-}
-```
-
 Then add the following to the version catalog:
 ```toml
 [plugins]
-minirogue-plugin = { id = "com.github.minirogue", version = "0.1.6" }
+minirogue-plugin = { id = "io.github.minirogue", version = "0.2.0" }
 ``` 
 and finally add the following to the root project `build.gradle`
 ```groovy
@@ -35,10 +20,10 @@ plugins {
 
 ### Applying and using the plugins
 Then the following plugins may be used for any gradle modules contained in the project:
-- `minirogue.multiplatform.library`
-- `minirogue.test.app`
-- `minirogue.android.app`
-- `minirogue.jvm.app`
+- `io.github.minirogue.multiplatform.library`
+- `io.github.minirogue.test.app`
+- `io.github.minirogue.android.app`
+- `io.github.minirogue.jvm.app`
 
 Then you may use the `minirogue` extension in the `build.gradle` file using the plugin to configure it:
 ```groovy
@@ -50,12 +35,14 @@ minirogue {
 ```
 
 ## Used by
-I will add a list here of repos that I have which use the build logic defined in this repo once they are publicly viewable.
+The convention plugins from this repo are used by the following projects:
+- https://github.com/Minirogue/HoloCanon
+- Some private repositories
 
 ## Dependencies
 
 This repo manages several dependencies (namely ones that have related gradle plugins) that will be inherited by any projects that consume it.
-As of version 0.1.6 the following dependencies and versions are used:
+As of version 0.2.0 the following dependencies and versions are used:
 
 - [Android Gradle Plugin (AGP)](https://developer.android.com/build/releases/gradle-plugin) = 8.13.0
 - [ComposeMultiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-compose-1610.html) = 1.8.2
