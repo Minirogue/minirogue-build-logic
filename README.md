@@ -58,7 +58,7 @@ This repo manages several dependencies (namely ones that have related gradle plu
 As of version 0.1.6 the following dependencies and versions are used:
 
 - [Android Gradle Plugin (AGP)](https://developer.android.com/build/releases/gradle-plugin) = 8.13.0
-- [ComposeMultiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-compose-1610.html) = 1.8.2
+- [ComposeMultiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-compose-1610.html) = 1.9.0
 - [Detekt](https://detekt.dev/changelog) = 1.23.8
 - [HotReload](https://github.com/JetBrains/compose-hot-reload/releases) = 1.0.0-beta06
 - [Java](https://www.java.com/releases/) = 21
