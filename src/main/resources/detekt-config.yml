@@ -5,7 +5,7 @@ config:
 
 naming:
   FunctionNaming:
-    ignoreAnnotated: ['Composable']
+    ignoreAnnotated: [ 'Composable' ]
 style:
   UnusedImports:
     active: true
