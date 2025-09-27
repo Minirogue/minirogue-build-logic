@@ -18,9 +18,7 @@ internal fun Project.configureCompose(
     pluginManager.apply(ComposePlugin::class.java)
     if (useHotReload) pluginManager.apply(ComposeHotReloadPlugin::class.java)
     extensions.findByType(CommonExtension::class.java)?.also {
-        it.buildFeatures {
-            compose = true
-        }
+        it.buildFeatures { compose = true }
     }
     val composeDependencies = ComposePlugin.Dependencies(this)
     if (isMultiplatform()) {
