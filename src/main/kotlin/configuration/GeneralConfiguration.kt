@@ -12,6 +12,7 @@ internal fun Project.applyUniversalConfigurations(useGradleChecker: Boolean = tr
     configureDetekt()
     configureGitHubConfigTask()
     configureCreateSrc(if (isMultiplatform()) SourceType.CommonMultiplatform else SourceType.SinglePlatform)
+    configureAddScriptsTask()
     tasks.withType(KotlinCompilationTask::class.java) {
         compilerOptions {
             freeCompilerArgs.add("-Xcontext-parameters")
