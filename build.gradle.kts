@@ -26,7 +26,7 @@ java {
 }
 
 detekt {
-    config.setFrom(files("detekt-config.yml"))
+    config.setFrom(files("src/main/resources/detekt-config.yml"))
     buildUponDefaultConfig = true
     autoCorrect = true
 }
