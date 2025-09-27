@@ -21,11 +21,13 @@ internal open class AddScriptsTask : DefaultTask() {
         listOf(
             "/scripts/create-module/createModule.main.kts",
             "/scripts/create-module/internal-template.gradle.kts",
-            "/scripts/create-module/public-template.gradle.kts"
+            "/scripts/create-module/public-template.gradle.kts",
         ).forEach { resourcePath ->
             val inputStream = this::class.java.getResourceAsStream(resourcePath)
             requireNotNull(inputStream) { "$resourcePath not found in jar resources" }
-            val outputStream = File("${createModuleDirectory.absolutePath}${File.separator}${resourcePath.split("/").last()}")
+            val outputStream = File(
+                "${createModuleDirectory.absolutePath}${File.separator}${resourcePath.split("/").last()}",
+            )
                 .outputStream()
             try {
                 inputStream.copyTo(outputStream)
