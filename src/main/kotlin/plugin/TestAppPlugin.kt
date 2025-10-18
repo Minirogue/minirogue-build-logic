@@ -37,4 +37,6 @@ public class TestAppPlugin : Plugin<Project> {
     }
 }
 
-public open class MinirogueTestAppExtension(project: Project)
+public open class MinirogueTestAppExtension(private val project: Project) {
+    public fun metro(): Unit = project.configureMetro()
+}

@@ -5,6 +5,7 @@ import configuration.configureCompose
 import configuration.configureDummyJvmCiTasks
 import configuration.configureJvm
 import configuration.configureJvmApp
+import configuration.configureMetro
 import configuration.configureSerialization
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -30,4 +31,5 @@ public open class MinirogueJvmAppExtension(private val project: Project) {
 
     public fun jvmApp(mainClass: String): Unit = project.configureJvmApp(mainClass)
     public fun serialization(): Unit = project.configureSerialization()
+    public fun metro(): Unit = project.configureMetro()
 }
