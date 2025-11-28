@@ -1,16 +1,29 @@
 package task
 
 import org.gradle.api.DefaultTask
+import org.gradle.api.tasks.CacheableTask
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputFiles
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 
+@CacheableTask
 internal open class AddScriptsTask : DefaultTask() {
-
-    private val scriptsDirectory = project.rootProject.file("scripts")
+    @get:InputFiles
+    val scriptsFromResource: List<File> = listOf(
+        "/scripts/create-module/createModule.main.kts",
+        "/scripts/create-module/internal-template.gradle.kts",
+        "/scripts/create-module/public-template.gradle.kts",
+    ).mapNotNull { resourcePath ->
+        this::class.java.getResource(resourcePath)?.toURI()?.let { File(it) }.also {
+            requireNotNull(it) { "$resourcePath not found in jar resources" }
+        }
+    }
 
     @get:OutputDirectory
-    val createModuleDirectory = project.file("$scriptsDirectory${File.separator}create-module")
+    val createModuleDirectory =
+        project.file("${project.rootProject.file("scripts")}${File.separator}create-module")
 
     @TaskAction
     fun copyScripts() {
@@ -18,15 +31,10 @@ internal open class AddScriptsTask : DefaultTask() {
     }
 
     private fun copyModuleCreationScript() {
-        listOf(
-            "/scripts/create-module/createModule.main.kts",
-            "/scripts/create-module/internal-template.gradle.kts",
-            "/scripts/create-module/public-template.gradle.kts",
-        ).forEach { resourcePath ->
-            val inputStream = this::class.java.getResourceAsStream(resourcePath)
-            requireNotNull(inputStream) { "$resourcePath not found in jar resources" }
+        scriptsFromResource.forEach { resourceScript ->
+            val inputStream = resourceScript.inputStream()
             val outputStream = File(
-                "${createModuleDirectory.absolutePath}${File.separator}${resourcePath.split("/").last()}",
+                "${createModuleDirectory.absolutePath}${File.separator}${resourceScript.name}",
             )
                 .outputStream()
             try {
