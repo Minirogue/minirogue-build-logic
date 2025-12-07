@@ -21,6 +21,7 @@ internal open class CreateGitHubConfigTask @Inject constructor() : DefaultTask()
         createDependabotYaml()
     }
 
+    // TODO change to use resource like detekt and scripts tasks
     private fun createStandardBuildWorkflow() {
         buildAndChecksWorkflowFile.printWriter().use { out ->
             out.apply {
@@ -42,24 +43,21 @@ internal open class CreateGitHubConfigTask @Inject constructor() : DefaultTask()
                 println("        with:")
                 println("          java-version: '21'")
                 println("          distribution: 'temurin'")
-                println("      - uses: actions/cache@v4")
+                println("      - name: Setup Gradle")
+                println("        uses: gradle/actions/setup-gradle@v5")
                 println("        with:")
-                println("          path: |")
-                println("            ~/.gradle/caches")
-                println("            ~/.gradle/wrapper")
-                println("          key: \${{ runner.os }}-gradle-\${{ github.run_id }}")
-                println("          restore-keys: |")
-                println("            \${{ runner.os }}-gradle-")
-                println("      - name: Gradle build and checks")
+                println("          build-scan-publish: true")
+                println("          build-scan-terms-of-use-url: 'https://gradle.com/terms-of-service'")
+                println("          build-scan-terms-of-use-agree: 'yes'")
                 println(
                     "        run: ./gradlew assembleDebug " +
-                        "testDebugUnitTest " +
-                        "jvmTest " +
-                        "detekt " +
-                        "lint " +
-                        "checkGradleConfig " +
-                        "--continue && " +
-                        "./gradlew --stop",
+                            "testDebugUnitTest " +
+                            "jvmTest " +
+                            "detekt " +
+                            "lint " +
+                            "checkGradleConfig " +
+                            "--continue && " +
+                            "./gradlew --stop",
                 )
             }
         }
