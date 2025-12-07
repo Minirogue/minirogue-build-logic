@@ -51,13 +51,13 @@ internal open class CreateGitHubConfigTask @Inject constructor() : DefaultTask()
                 println("          build-scan-terms-of-use-agree: 'yes'")
                 println(
                     "        run: ./gradlew assembleDebug " +
-                            "testDebugUnitTest " +
-                            "jvmTest " +
-                            "detekt " +
-                            "lint " +
-                            "checkGradleConfig " +
-                            "--continue && " +
-                            "./gradlew --stop",
+                        "testDebugUnitTest " +
+                        "jvmTest " +
+                        "detekt " +
+                        "lint " +
+                        "checkGradleConfig " +
+                        "--continue && " +
+                        "./gradlew --stop",
                 )
             }
         }
