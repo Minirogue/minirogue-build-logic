@@ -18,7 +18,7 @@ import org.gradle.api.file.DirectoryProperty
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import task.SourceType
 
-public class KotlinMultiplatformLibraryPlugin : Plugin<Project> {
+public class KotlinMultiplatformLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
