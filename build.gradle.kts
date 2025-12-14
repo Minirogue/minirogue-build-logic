@@ -50,7 +50,7 @@ gradlePlugin {
     plugins {
         register("multiplatformLibrary") {
             id = "minirogue.multiplatform.library"
-            implementationClass = "plugin.KotlinMultiplatformLibraryConvention"
+            implementationClass = "plugin.KotlinMultiplatformLibraryPlugin"
         }
         register("testApp") {
             id = "minirogue.test.app"

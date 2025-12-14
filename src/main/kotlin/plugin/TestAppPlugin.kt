@@ -3,12 +3,15 @@ package plugin
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.internal.utils.KOTLIN_ANDROID_PLUGIN_ID
+import configuration.AddScriptsTaskConfiguration
+import configuration.UniversalConfiguration
 import configuration.applyUniversalConfigurations
 import configuration.configureAndroidApp
 import configuration.configureMetro
 import ext.generateProjectNamespace
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.file.DirectoryProperty
 
 public class TestAppPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -17,7 +20,13 @@ public class TestAppPlugin : Plugin<Project> {
                 apply(AppPlugin::class.java)
                 apply(KOTLIN_ANDROID_PLUGIN_ID)
             }
-            applyUniversalConfigurations(useGradleChecker = false)
+            val testAppExtension = extensions.create(
+                "minirogue",
+                MinirogueTestAppExtension::class.java,
+                target,
+            )
+
+            applyUniversalConfigurations(testAppExtension.universalConfiguration)
             configureAndroidApp()
             configureMetro()
 
@@ -27,16 +36,19 @@ public class TestAppPlugin : Plugin<Project> {
                 }
                 namespace = generateProjectNamespace()
             }
-
-            extensions.create(
-                "minirogue",
-                MinirogueTestAppExtension::class.java,
-                target,
-            )
         }
     }
 }
 
 public open class MinirogueTestAppExtension(private val project: Project) {
+    // TODO replace with by-task DSL
+    public val scriptsDirectory: DirectoryProperty = project.objects.directoryProperty()
+
     public fun metro(): Unit = project.configureMetro()
+
+    internal val universalConfiguration = UniversalConfiguration(
+        useGradleCheckerTask = false,
+        addScriptsTaskConfiguration = AddScriptsTaskConfiguration(scriptsDirectory)
+    )
+
 }
