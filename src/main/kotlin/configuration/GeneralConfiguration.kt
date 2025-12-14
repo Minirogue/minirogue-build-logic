@@ -7,12 +7,17 @@ import task.GradleCheckerTask
 import task.MINIROGUE_TASK_GROUP
 import task.SourceType
 
-internal fun Project.applyUniversalConfigurations(useGradleChecker: Boolean = true) {
-    if (useGradleChecker) configureGradleChecker()
+internal data class UniversalConfiguration(
+    val useGradleCheckerTask: Boolean = true,
+    val addScriptsTaskConfiguration: AddScriptsTaskConfiguration,
+)
+
+internal fun Project.applyUniversalConfigurations(universalConfiguration: UniversalConfiguration) {
+    if (universalConfiguration.useGradleCheckerTask) configureGradleChecker()
     configureDetekt()
     configureGitHubConfigTask()
     configureCreateSrc(if (isMultiplatform()) SourceType.CommonMultiplatform else SourceType.SinglePlatform)
-    configureAddScriptsTask()
+    configureAddScriptsTask(universalConfiguration.addScriptsTaskConfiguration)
     tasks.withType(KotlinCompilationTask::class.java) {
         compilerOptions {
             freeCompilerArgs.add("-Xcontext-parameters")
