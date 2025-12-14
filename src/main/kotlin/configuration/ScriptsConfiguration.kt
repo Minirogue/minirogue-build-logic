@@ -13,7 +13,9 @@ internal fun Project.configureAddScriptsTask(configuration: AddScriptsTaskConfig
     if (rootProject.tasks.none { it.name == ADD_SCRIPTS_TASK }) {
         // Creates single instance of this task in root project
         rootProject.tasks.register(ADD_SCRIPTS_TASK, AddScriptsTask::class.java) {
-           val configuredScriptsDirectory = configuration.configuredScriptsDirectory.convention(project.layout.projectDirectory.dir("scripts${File.separator}create-module"))
+            val configuredScriptsDirectory = configuration.configuredScriptsDirectory.convention(
+                project.layout.projectDirectory.dir("scripts${File.separator}create-module"),
+            )
             scriptsDirectory.set(configuredScriptsDirectory)
 
             group = MINIROGUE_TASK_GROUP
