@@ -4,12 +4,11 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
-import java.io.File
 
 internal abstract class AddScriptsTask : DefaultTask() {
 
     @get:OutputDirectory
-    abstract val scriptsDirectory : DirectoryProperty
+    abstract val scriptsDirectory: DirectoryProperty
 
     @TaskAction
     fun copyScripts() {

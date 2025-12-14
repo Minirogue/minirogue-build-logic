@@ -23,9 +23,8 @@ public class JvmAppConventionPlugin : Plugin<Project> {
             val jvmAppExtension = extensions.create(
                 "minirogue",
                 MinirogueJvmAppExtension::class.java,
-                target
+                target,
             )
-
 
             applyUniversalConfigurations(jvmAppExtension.universalConfiguration)
             configureJvm()
@@ -40,7 +39,7 @@ public open class MinirogueJvmAppExtension(private val project: Project) {
 
     internal val universalConfiguration = UniversalConfiguration(
         useGradleCheckerTask = false,
-        addScriptsTaskConfiguration = AddScriptsTaskConfiguration(scriptsDirectory)
+        addScriptsTaskConfiguration = AddScriptsTaskConfiguration(scriptsDirectory),
     )
 
     public fun composeApp(mainClass: String, useHotReload: Boolean = false): Unit =
