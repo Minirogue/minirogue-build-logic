@@ -18,5 +18,3 @@ internal abstract class CreateVersionCodeFileTask : DefaultTask() {
         versionCodeSource.get().asFile.copyTo(target = outputFile.get().asFile, overwrite = true)
     }
 }
-
-

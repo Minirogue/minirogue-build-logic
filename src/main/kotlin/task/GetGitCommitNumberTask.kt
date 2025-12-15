@@ -4,8 +4,6 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
 import org.jetbrains.kotlin.konan.file.File
-import org.jetbrains.kotlin.konan.file.bufferedReader
-import java.nio.charset.Charset
 
 internal open class GetGitCommitNumberTask : DefaultTask() {
     @get:OutputFile

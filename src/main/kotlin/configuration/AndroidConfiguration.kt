@@ -74,17 +74,16 @@ private fun Project.configureCreateAndroidVersionCodeTask() {
     tasks.register("getGitCommitNumber", GetGitCommitNumberTask::class.java) {
         group = MINIROGUE_TASK_GROUP
         description = "Gets number of git commits in current branch's history."
-
     }
     // TODO add end-user configuration for source of version code
     tasks.register(
-        "createAndroidVersionCode",// TODO extract to constant name
-        CreateVersionCodeFileTask::class.java
+        "createAndroidVersionCode", // TODO extract to constant name
+        CreateVersionCodeFileTask::class.java,
     ) {
         dependsOn("getGitCommitNumber")
         versionCodeSource.set(
             tasks.named("getGitCommitNumber", GetGitCommitNumberTask::class.java)
-                .get().numberOfCommitsInBranchHistory
+                .get().numberOfCommitsInBranchHistory,
         )
 
         group = MINIROGUE_TASK_GROUP
