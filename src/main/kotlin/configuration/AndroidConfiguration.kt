@@ -9,7 +9,6 @@ import ext.generateResourcePrefix
 import ext.getDateAsVersionName
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.konan.file.File
 import task.CreateVersionCodeFileTask
 import task.GetGitCommitNumberTask
@@ -89,9 +88,6 @@ private fun Project.configureCreateAndroidVersionCodeTask() {
         group = MINIROGUE_TASK_GROUP
         description = "Creates versionCode file that is used for Android app"
     }
-    tasks.withType(KotlinCompile::class.java) {
-        dependsOn("createAndroidVersionCode")
-    }
 }
 
 // TODO would like this to be verified as up-to-date at configuration time, but that would violate
@@ -102,6 +98,9 @@ private fun Project.getVersionCodeFromPropertyFile(): Int = try {
     versionFile.get().asFile.readText().trim().toIntOrNull()
         ?: 1.also { logger.warn("versionCode not properly formatted in $versionFile, defaulting to 1") }
 } catch (ioException: IOException) {
-    logger.warn("error reading versionCode file, defaulting to 1", ioException)
+    logger.warn(
+        "Couldn't read versionCode from createAndroidVersionCode task. Ensure it has been run at least once since the last clean build. Defaulting to version code 1",
+        ioException
+    )
     1
 }
