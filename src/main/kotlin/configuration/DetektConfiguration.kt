@@ -27,11 +27,7 @@ internal fun Project.configureDetekt() {
         }
     }
     tasks.withType(Detekt::class.java) {
-        dependsOn(
-            rootProject.tasks.getByName(
-                CREATE_DETEKT_CONFIG_TASK,
-            ),
-        )
+        dependsOn(rootProject.tasks.getByName(CREATE_DETEKT_CONFIG_TASK))
     }
 
     extensions.configure(DetektExtension::class.java) {
