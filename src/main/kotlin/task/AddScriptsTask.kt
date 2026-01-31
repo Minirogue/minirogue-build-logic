@@ -1,16 +1,14 @@
 package task
 
 import org.gradle.api.DefaultTask
+import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
-import java.io.File
 
-internal open class AddScriptsTask : DefaultTask() {
-
-    private val scriptsDirectory = project.rootProject.file("scripts")
+internal abstract class AddScriptsTask : DefaultTask() {
 
     @get:OutputDirectory
-    val createModuleDirectory = project.file("$scriptsDirectory${File.separator}create-module")
+    abstract val scriptsDirectory: DirectoryProperty
 
     @TaskAction
     fun copyScripts() {
@@ -25,9 +23,9 @@ internal open class AddScriptsTask : DefaultTask() {
         ).forEach { resourcePath ->
             val inputStream = this::class.java.getResourceAsStream(resourcePath)
             requireNotNull(inputStream) { "$resourcePath not found in jar resources" }
-            val outputStream = File(
-                "${createModuleDirectory.absolutePath}${File.separator}${resourcePath.split("/").last()}",
-            )
+            val outputStream = scriptsDirectory.get()
+                .file(resourcePath.split("/").last())
+                .asFile
                 .outputStream()
             try {
                 inputStream.copyTo(outputStream)
