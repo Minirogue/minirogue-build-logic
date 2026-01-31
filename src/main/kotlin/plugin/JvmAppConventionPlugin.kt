@@ -1,5 +1,7 @@
 package plugin
 
+import configuration.AddScriptsTaskConfiguration
+import configuration.UniversalConfiguration
 import configuration.applyUniversalConfigurations
 import configuration.configureCompose
 import configuration.configureDummyJvmCiTasks
@@ -9,6 +11,7 @@ import configuration.configureMetro
 import configuration.configureSerialization
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.file.DirectoryProperty
 
 public class JvmAppConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -16,16 +19,29 @@ public class JvmAppConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("org.jetbrains.kotlin.jvm")
             }
-            applyUniversalConfigurations(useGradleChecker = false)
+
+            val jvmAppExtension = extensions.create(
+                "minirogue",
+                MinirogueJvmAppExtension::class.java,
+                target,
+            )
+
+            applyUniversalConfigurations(jvmAppExtension.universalConfiguration)
             configureJvm()
             configureDummyJvmCiTasks()
-
-            extensions.create("minirogue", MinirogueJvmAppExtension::class.java, target)
         }
     }
 }
 
 public open class MinirogueJvmAppExtension(private val project: Project) {
+    // TODO replace with by-task DSL
+    public val scriptsDirectory: DirectoryProperty = project.objects.directoryProperty()
+
+    internal val universalConfiguration = UniversalConfiguration(
+        useGradleCheckerTask = false,
+        addScriptsTaskConfiguration = AddScriptsTaskConfiguration(scriptsDirectory),
+    )
+
     public fun composeApp(mainClass: String, useHotReload: Boolean = false): Unit =
         project.configureCompose(desktopMainClass = mainClass, useHotReload = useHotReload)
 
