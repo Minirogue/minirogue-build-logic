@@ -9,7 +9,7 @@ kotlinLang = "2.3.0" # https://kotlinlang.org/docs/releases.html#release-details
 ksp = "2.3.3" # https://github.com/google/ksp/releases
 metro = "0.9.4" # https://github.com/ZacSweers/metro/releases
 room = "2.8.4" # https://developer.android.com/jetpack/androidx/releases/room
-serialization = "1.9.0" # https://github.com/Kotlin/kotlinx.serialization/releases
+serialization = "1.10.0" # https://github.com/Kotlin/kotlinx.serialization/releases
 
 [libraries]
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
