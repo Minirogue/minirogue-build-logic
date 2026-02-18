@@ -64,7 +64,7 @@ As of version 0.1.12 the following dependencies and versions are used:
 - [Java](https://www.java.com/releases/) = 21
 - [Kotlin](https://kotlinlang.org/docs/releases.html#release-details) = 2.3.0
 - [Kotlin Serialization](https://github.com/Kotlin/kotlinx.serialization/releases) = 1.10.0
-- [Kotlin Symbol Processing](https://github.com/google/ksp/releases) = 2.3.3
+- [Kotlin Symbol Processing](https://github.com/google/ksp/releases) = 2.3.5
 - [Metro](https://github.com/ZacSweers/metro/releases) = 0.10.3
 - [Room](https://developer.android.com/jetpack/androidx/releases/room) = 2.8.4
 
