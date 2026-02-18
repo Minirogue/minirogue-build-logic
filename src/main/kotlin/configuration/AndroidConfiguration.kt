@@ -1,7 +1,7 @@
 package configuration
 
 import com.android.build.api.dsl.ApplicationExtension
-import com.android.build.api.dsl.androidLibrary
+import com.android.build.api.dsl.KotlinMultiplatformAndroidLibraryTarget
 import com.android.build.gradle.api.KotlinMultiplatformAndroidPlugin
 import ext.generateProjectNamespace
 import ext.getDateAsVersionName
@@ -22,8 +22,8 @@ private const val TARGET_SDK = 36
 
 internal fun Project.configureAndroidMultiplatformLibrary() {
     with(pluginManager) { apply(KotlinMultiplatformAndroidPlugin::class.java) }
-    extensions.configure(KotlinMultiplatformExtension::class.java) {
-        androidLibrary {
+    extensions.getByType(KotlinMultiplatformExtension::class.java)
+        .extensions.configure(KotlinMultiplatformAndroidLibraryTarget::class.java) {
             namespace = generateProjectNamespace()
             compileSdk = COMPILE_SDK
             minSdk = MIN_SDK
@@ -41,7 +41,6 @@ internal fun Project.configureAndroidMultiplatformLibrary() {
             withHostTest {}
             withDeviceTest { instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner" }
         }
-    }
 }
 
 internal fun Project.configureAndroidApp() {

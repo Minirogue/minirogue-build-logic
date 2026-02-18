@@ -17,7 +17,6 @@ public class AndroidAppConventionPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply(AppPlugin::class.java)
-                apply(KOTLIN_ANDROID_PLUGIN_ID)
             }
 
             val extension = extensions.create(

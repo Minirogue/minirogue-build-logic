@@ -18,7 +18,6 @@ public class TestAppPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply(AppPlugin::class.java)
-                apply(KOTLIN_ANDROID_PLUGIN_ID)
             }
             val testAppExtension = extensions.create(
                 "minirogue",
