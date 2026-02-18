@@ -24,7 +24,7 @@ pluginManagement {
 Then add the following to the version catalog:
 ```toml
 [plugins]
-minirogue-plugin = { id = "com.github.minirogue", version = "0.1.13" }
+minirogue-plugin = { id = "com.github.minirogue", version = "0.2.0" }
 ``` 
 and finally add the following to the root project `build.gradle`
 ```groovy
@@ -55,7 +55,7 @@ I will add a list here of repos that I have which use the build logic defined in
 ## Dependencies
 
 This repo manages several dependencies (namely ones that have related gradle plugins) that will be inherited by any projects that consume it.
-As of version 0.1.13 the following dependencies and versions are used:
+As of version 0.2.0 the following dependencies and versions are used:
 
 - [Android Gradle Plugin (AGP)](https://developer.android.com/build/releases/gradle-plugin) = 8.13.2
 - [ComposeMultiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-compose-1610.html) = 1.10.0
