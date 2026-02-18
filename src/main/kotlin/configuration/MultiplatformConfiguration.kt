@@ -1,19 +1,11 @@
 package configuration
 
 import org.gradle.api.Project
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 import task.SourceType
 
 internal fun Project.configureKotlinMultiplatformAndroid() {
-    configureAndroidLibrary()
-    extensions.configure(KotlinMultiplatformExtension::class.java) {
-        androidTarget {
-            @OptIn(ExperimentalKotlinGradlePluginApi::class)
-            instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
-        }
-    }
+    configureAndroidMultiplatformLibrary()
     configureCreateSrc(SourceType.AndroidMultiplatform)
     configureTest(SourceType.AndroidMultiplatform)
 }

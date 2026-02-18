@@ -1,14 +1,14 @@
 package configuration
 
 import com.android.build.api.dsl.ApplicationExtension
-import com.android.build.api.dsl.CommonExtension
-import com.android.build.api.dsl.LibraryExtension
-import com.android.build.gradle.LibraryPlugin
+import com.android.build.api.dsl.androidLibrary
+import com.android.build.gradle.api.KotlinMultiplatformAndroidPlugin
 import ext.generateProjectNamespace
-import ext.generateResourcePrefix
 import ext.getDateAsVersionName
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.konan.file.File
 import task.CreateVersionCodeFileTask
 import task.GetGitCommitNumberTask
@@ -20,24 +20,41 @@ private const val MIN_SDK = 23
 private const val COMPILE_SDK = 36
 private const val TARGET_SDK = 36
 
-internal fun Project.configureAndroidLibrary() {
-    with(pluginManager) { apply(LibraryPlugin::class.java) }
-    extensions.configure(LibraryExtension::class.java) {
-        namespace = generateProjectNamespace()
-        resourcePrefix = generateResourcePrefix()
-        configureAndroidCommon(this)
+internal fun Project.configureAndroidMultiplatformLibrary() {
+    with(pluginManager) { apply(KotlinMultiplatformAndroidPlugin::class.java) }
+    extensions.configure(KotlinMultiplatformExtension::class.java) {
+        androidLibrary {
+            namespace = generateProjectNamespace()
+            compileSdk = COMPILE_SDK
+            minSdk = MIN_SDK
+
+            androidResources { enable = true }
+
+            withJava() // TODO need to understand this more.
+            compilerOptions {
+                jvmTarget.set(JvmTarget.fromTarget(JAVA_VERSION))
+            }
+            lint {
+                baseline = file("lint-baseline.xml")
+            }
+
+            withHostTest {}
+            withDeviceTest { instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner" }
+        }
     }
 }
 
 internal fun Project.configureAndroidApp() {
     extensions.configure(ApplicationExtension::class.java) {
-        configureAndroidCommon(this)
         configureCreateAndroidVersionCodeTask() // TODO add end-user configurability
         defaultConfig {
+            compileSdk = COMPILE_SDK
+            minSdk = MIN_SDK
             targetSdk = TARGET_SDK
             versionCode = getVersionCodeFromPropertyFile()
             versionName = getDateAsVersionName()
             namespace = generateProjectNamespace()
+            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
         buildTypes {
             release {
@@ -50,16 +67,6 @@ internal fun Project.configureAndroidApp() {
                 applicationIdSuffix = ".debug"
             }
         }
-    }
-}
-
-private fun Project.configureAndroidCommon(commonExtension: CommonExtension<*, *, *, *, *, *>) =
-    with(commonExtension) {
-        compileSdk = COMPILE_SDK
-        defaultConfig {
-            minSdk = MIN_SDK
-            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        }
         compileOptions {
             sourceCompatibility = JavaVersion.toVersion(JAVA_VERSION)
             targetCompatibility = JavaVersion.toVersion(JAVA_VERSION)
@@ -68,7 +75,7 @@ private fun Project.configureAndroidCommon(commonExtension: CommonExtension<*, *
             baseline = file("lint-baseline.xml")
         }
     }
-
+}
 private fun Project.configureCreateAndroidVersionCodeTask() {
     tasks.register("getGitCommitNumber", GetGitCommitNumberTask::class.java) {
         group = MINIROGUE_TASK_GROUP
