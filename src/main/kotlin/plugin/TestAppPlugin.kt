@@ -2,7 +2,6 @@ package plugin
 
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.gradle.AppPlugin
-import com.android.build.gradle.internal.utils.KOTLIN_ANDROID_PLUGIN_ID
 import configuration.AddScriptsTaskConfiguration
 import configuration.UniversalConfiguration
 import configuration.applyUniversalConfigurations
@@ -18,7 +17,6 @@ public class TestAppPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply(AppPlugin::class.java)
-                apply(KOTLIN_ANDROID_PLUGIN_ID)
             }
             val testAppExtension = extensions.create(
                 "minirogue",

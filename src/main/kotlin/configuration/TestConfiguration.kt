@@ -21,7 +21,7 @@ internal fun Project.configureTest(sourceType: SourceType) {
         }
 
         SourceType.AndroidMultiplatform -> {
-            kotlinExtension.sourceSets.named("androidUnitTest") {
+            kotlinExtension.sourceSets.named("androidHostTest") {
                 dependencies {
                     implementation("org.jetbrains.kotlin:kotlin-test-junit")
                 }
