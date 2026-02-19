@@ -1,7 +1,9 @@
 package task
 
 import org.gradle.api.DefaultTask
+import org.gradle.api.file.RegularFile
 import org.gradle.api.file.RegularFileProperty
+import org.gradle.api.provider.Provider
 import org.gradle.api.tasks.CacheableTask
 import org.gradle.api.tasks.InputFile
 import org.gradle.api.tasks.OutputFile
@@ -18,7 +20,7 @@ internal abstract class CreateVersionCodeFileTask : DefaultTask() {
     abstract val versionCodeSource: RegularFileProperty
 
     @get:OutputFile
-    val outputFile = project.layout.buildDirectory.file("minirogue/versionCode")
+    val outputFile: Provider<RegularFile> = project.layout.buildDirectory.file("minirogue/versionCode")
 
     @TaskAction
     fun copyScripts() {
