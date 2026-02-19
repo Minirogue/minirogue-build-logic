@@ -1,6 +1,5 @@
 package configuration
 
-import com.android.build.api.dsl.CommonExtension
 import ext.isMultiplatform
 import org.gradle.api.Project
 import org.jetbrains.compose.ComposeExtension

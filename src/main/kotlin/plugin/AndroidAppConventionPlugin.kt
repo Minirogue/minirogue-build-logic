@@ -1,7 +1,6 @@
 package plugin
 
 import com.android.build.gradle.AppPlugin
-import com.android.build.gradle.internal.utils.KOTLIN_ANDROID_PLUGIN_ID
 import configuration.AddScriptsTaskConfiguration
 import configuration.UniversalConfiguration
 import configuration.applyUniversalConfigurations
