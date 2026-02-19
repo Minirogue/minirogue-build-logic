@@ -1,0 +1,20 @@
+---
+description: Build verification and detekt for minirogue-build-logic
+alwaysApply: true
+---
+
+# Build verification
+
+When verifying changes in this repo, run the full build (not just compile):
+
+```bash
+./gradlew build detekt checkReadme publishToMavenLocal --continue 2>&1 | tail -120
+```
+
+# Detekt
+
+The detekt task can auto-fix certain formatting issues (e.g. import order). **Run detekt twice** before attempting to fix a failure manually; the second run may pass after auto-fixes from the first run.
+
+```bash
+./gradlew detekt 2>&1; ./gradlew detekt 2>&1
+```
