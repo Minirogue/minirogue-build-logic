@@ -17,6 +17,8 @@ style:
     active: false # overlaps with formatting>ModifierOrdering
   NewLineAtEndOfFile:
     active: false # overlaps with formatting>FinalNewline
+  ForbiddenComment:
+    active: false
 
 formatting:
   Filename:
