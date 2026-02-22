@@ -31,3 +31,5 @@ formatting:
 complexity:
   LongParameterList:
     active: false
+  NamedArguments:
+    active: true
