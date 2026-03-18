@@ -4,7 +4,9 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
+import org.gradle.api.tasks.UntrackedTask
 
+@UntrackedTask(because = "rarely run task that doesn't need optimizations")
 internal abstract class AddScriptsTask : DefaultTask() {
 
     @get:OutputDirectory
