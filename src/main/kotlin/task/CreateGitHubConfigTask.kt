@@ -3,9 +3,11 @@ package task
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
+import org.gradle.api.tasks.UntrackedTask
 import org.jetbrains.kotlin.konan.file.File
 import javax.inject.Inject
 
+@UntrackedTask(because = "rarely run task that doesn't need optimizations")
 internal open class CreateGitHubConfigTask @Inject constructor() : DefaultTask() {
 
     @OutputFile

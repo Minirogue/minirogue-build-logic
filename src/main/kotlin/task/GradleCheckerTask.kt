@@ -1,11 +1,14 @@
 package task
 
 import org.gradle.api.DefaultTask
+import org.gradle.api.tasks.CacheableTask
 import org.gradle.api.tasks.InputFile
+import org.gradle.api.tasks.PathSensitive
+import org.gradle.api.tasks.PathSensitivity
 import org.gradle.api.tasks.TaskAction
 import org.gradle.api.tasks.TaskExecutionException
 import java.io.File
-
+@CacheableTask
 internal open class GradleCheckerTask : DefaultTask() {
     private val acceptableRoots = listOf(
         "plugins",
@@ -19,6 +22,7 @@ internal open class GradleCheckerTask : DefaultTask() {
     )
 
     @InputFile
+    @PathSensitive(value = PathSensitivity.RELATIVE)
     val gradleFile: File = project.buildFile
 
     @Suppress("MagicNumber")
