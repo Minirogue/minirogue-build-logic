@@ -120,12 +120,10 @@ tasks.register("checkReadme").configure {
 
 fun convertVersionLineToKotlinVersionLine(versionLine: String): String = buildString {
     append("internal const val ")
-    append(
-        versionLine
-            .uppercase()
-            .trim()
-            .replaceFirst(" ", "_VERSION ")
-    )
+    val splitVersionLine = versionLine.trim().split(" ")
+    append(splitVersionLine[0].trim().uppercase() + "_VERSION ")
+    append(splitVersionLine[1].trim() + " ")
+    append(splitVersionLine[2].trim())
 }
 
 fun updateReadmeVersionLine(readmeVersionLine: String, versionLines: List<String>): String {
