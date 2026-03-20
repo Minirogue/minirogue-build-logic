@@ -1,8 +1,8 @@
 package configuration
 
-import io.gitlab.arturbosch.detekt.Detekt
-import io.gitlab.arturbosch.detekt.DetektPlugin
-import io.gitlab.arturbosch.detekt.extensions.DetektExtension
+import dev.detekt.gradle.Detekt
+import dev.detekt.gradle.extensions.DetektExtension
+import dev.detekt.gradle.plugin.DetektPlugin
 import org.gradle.api.Project
 import task.CreateDetektConfigTask
 import task.MINIROGUE_TASK_GROUP
@@ -15,7 +15,7 @@ internal fun Project.configureDetekt() {
     // Add formatting, which is a wrapper around ktlint
     dependencies.add(
         "detektPlugins",
-        "io.gitlab.arturbosch.detekt:detekt-formatting:$DETEKT_VERSION",
+        "dev.detekt:detekt-rules-ktlint-wrapper:$DETEKT_VERSION",
     )
 
     if (rootProject.tasks.none { it.name == CREATE_DETEKT_CONFIG_TASK }) {
@@ -39,7 +39,7 @@ internal fun Project.configureDetekt() {
             "src/iosMain", "src/iosTest",
         )
         config.setFrom(files(rootProject.tasks.getByName(CREATE_DETEKT_CONFIG_TASK)))
-        buildUponDefaultConfig = true
-        autoCorrect = true
+        buildUponDefaultConfig.set(true)
+        autoCorrect.set(true)
     }
 }

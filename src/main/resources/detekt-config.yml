@@ -1,13 +1,13 @@
 config:
   validation: true
   warningsAsErrors: false
-  excludes: ''
+  excludes: []
 
 naming:
   FunctionNaming:
     ignoreAnnotated: [ 'Composable' ]
 style:
-  UnusedImports:
+  UnusedImport:
     active: true
   MagicNumber:
     ignoreEnums: true
@@ -20,7 +20,7 @@ style:
   ForbiddenComment:
     active: false
 
-formatting:
+ktlint:
   Filename:
     active: false # overlaps with naming>MatchingDeclarationName
   TrailingCommaOnCallSite:

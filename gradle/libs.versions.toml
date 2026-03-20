@@ -1,9 +1,9 @@
 [versions]
 agp = "9.1.0" # https://developer.android.com/reference/tools/gradle-api
 composeMultiplatform = "1.10.2" # https://github.com/JetBrains/compose-multiplatform/releases
-hotReload = "1.0.0" # https://github.com/JetBrains/compose-hot-reload/releases
-detekt = "1.23.8" # https://github.com/detekt/detekt/releases
+detekt = "2.0.0-alpha.2" # https://github.com/detekt/detekt/releases
 gradlePublish = "2.1.1"
+hotReload = "1.0.0" # https://github.com/JetBrains/compose-hot-reload/releases
 java = "21"
 kotlinLang = "2.3.20" # https://kotlinlang.org/docs/releases.html#release-details
 ksp = "2.3.6" # https://github.com/google/ksp/releases
@@ -16,8 +16,8 @@ android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", ver
 compose-gradlePlugin = { group = "org.jetbrains.compose", name = "compose-gradle-plugin", version.ref = "composeMultiplatform" }
 compose-compilerGradlePlugin = { group = "org.jetbrains.kotlin", name = "compose-compiler-gradle-plugin", version.ref = "kotlinLang" }
 compose-hotReloadGradlePlugin = { group = "org.jetbrains.compose.hot-reload", name = "hot-reload-gradle-plugin", version.ref = "hotReload" }
-detekt-gradlePlugin = { group = "io.gitlab.arturbosch.detekt", name = "detekt-gradle-plugin", version.ref = "detekt" }
-detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
+detekt-gradlePlugin = { group = "dev.detekt", name = "detekt-gradle-plugin", version.ref = "detekt" }
+detekt-formatting = { group = "dev.detekt", name = "detekt-rules-ktlint-wrapper", version.ref = "detekt" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlinLang" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "symbol-processing-gradle-plugin", version.ref = "ksp" }
 metro-gradlePlugin = {group = "dev.zacsweers.metro", name = "gradle-plugin", version.ref = "metro"}
@@ -28,4 +28,4 @@ serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serializ
 
 [plugins]
 gradle-publish = { id = "com.gradle.plugin-publish", version.ref = "gradlePublish" }
-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+detekt = { id = "dev.detekt", version.ref = "detekt" }

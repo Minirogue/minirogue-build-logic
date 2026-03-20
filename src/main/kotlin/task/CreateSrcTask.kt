@@ -28,13 +28,17 @@ internal open class CreateSrcTask @Inject constructor(sourceType: SourceType) : 
     @OutputDirectories
     val outputDirectory = when (sourceType) {
         SourceType.SinglePlatform -> project.files(sourceDirectory("main"), sourceDirectory("test"))
+
         SourceType.CommonMultiplatform -> project.files(sourceDirectory("commonMain"), sourceDirectory("commonTest"))
+
         SourceType.AndroidMultiplatform -> project.files(
             sourceDirectory("androidMain"),
             sourceDirectory("androidHostTest"),
             sourceDirectory("androidDeviceTest"),
         )
+
         SourceType.JvmMultiplatform -> project.files(sourceDirectory("jvmMain"), sourceDirectory("jvmTest"))
+
         SourceType.IosMultiplatform -> project.files(sourceDirectory("iosMain"), sourceDirectory("iosTest"))
     }
 
