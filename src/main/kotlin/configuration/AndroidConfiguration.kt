@@ -104,11 +104,10 @@ private fun Project.getVersionCodeFromPropertyFile(): Int = try {
     versionFile.get().asFile.readText().trim().toIntOrNull()
         ?: 1.also { logger.warn("versionCode not properly formatted in $versionFile, defaulting to 1") }
 } catch (ioException: IOException) {
-    logger.warn(
+    logger.info(
         "Couldn't read versionCode from createAndroidVersionCode task." +
             " Ensure it has been run at least once since the last clean build. " +
-            "Defaulting to version code 1.",
-        ioException,
+            "Defaulting to version code 1."
     )
     1
 }

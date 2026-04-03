@@ -10,19 +10,21 @@ ksp = "2.3.6" # https://github.com/google/ksp/releases
 metro = "0.11.4" # https://github.com/ZacSweers/metro/releases
 room = "2.8.4" # https://developer.android.com/jetpack/androidx/releases/room
 serialization = "1.10.0" # https://github.com/Kotlin/kotlinx.serialization/releases
+truth = "1.4.5"
 
 [libraries]
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
-compose-gradlePlugin = { group = "org.jetbrains.compose", name = "compose-gradle-plugin", version.ref = "composeMultiplatform" }
 compose-compilerGradlePlugin = { group = "org.jetbrains.kotlin", name = "compose-compiler-gradle-plugin", version.ref = "kotlinLang" }
+compose-gradlePlugin = { group = "org.jetbrains.compose", name = "compose-gradle-plugin", version.ref = "composeMultiplatform" }
 compose-hotReloadGradlePlugin = { group = "org.jetbrains.compose.hot-reload", name = "hot-reload-gradle-plugin", version.ref = "hotReload" }
-detekt-gradlePlugin = { group = "dev.detekt", name = "detekt-gradle-plugin", version.ref = "detekt" }
 detekt-formatting = { group = "dev.detekt", name = "detekt-rules-ktlint-wrapper", version.ref = "detekt" }
+detekt-gradlePlugin = { group = "dev.detekt", name = "detekt-gradle-plugin", version.ref = "detekt" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlinLang" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "symbol-processing-gradle-plugin", version.ref = "ksp" }
-metro-gradlePlugin = {group = "dev.zacsweers.metro", name = "gradle-plugin", version.ref = "metro"}
+metro-gradlePlugin = { group = "dev.zacsweers.metro", name = "gradle-plugin", version.ref = "metro" }
 room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
 serialization-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-serialization", version.ref = "kotlinLang" }
+truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
 # This dependency isn't used directly in this project, but the dependency is used in SerializationConfiguration
 serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "serialization" }
 
