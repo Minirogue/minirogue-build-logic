@@ -107,7 +107,7 @@ private fun Project.getVersionCodeFromPropertyFile(): Int = try {
     logger.info(
         "Couldn't read versionCode from createAndroidVersionCode task." +
             " Ensure it has been run at least once since the last clean build. " +
-            "Defaulting to version code 1."
+            "Defaulting to version code 1.",
     )
     1
 }

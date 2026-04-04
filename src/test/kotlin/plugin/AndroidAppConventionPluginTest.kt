@@ -30,29 +30,28 @@ class AndroidAppConventionPluginTest {
     private lateinit var commonFile: File
     private lateinit var androidFile: File
 
-
     @BeforeEach
     fun setup() {
         settingsFile = File(testProjectDir, "settings.gradle")
         buildFile = File(testProjectDir, "build.gradle")
         jvmFile = File(
             testProjectDir,
-            "src/jvmMain/kotlin/somepackage/TestJavaClass.kt"
+            "src/jvmMain/kotlin/somepackage/TestJavaClass.kt",
         ).also { it.parentFile.mkdirs() }
         androidFile = File(
             testProjectDir,
-            "src/androidMain/kotlin/somepackage/TestAndroidClass.kt"
+            "src/androidMain/kotlin/somepackage/TestAndroidClass.kt",
         ).also { it.parentFile.mkdirs() }
         commonFile = File(
             testProjectDir,
-            "src/commonMain/kotlin/somepackage/TestCommonClass.kt"
+            "src/commonMain/kotlin/somepackage/TestCommonClass.kt",
         ).also { it.parentFile.mkdirs() }
     }
 
     @AfterEach
     fun tearDown() {
         // clear build cache
-        File(testProjectDir,"build").deleteRecursively()
+        File(testProjectDir, "build").deleteRecursively()
     }
 
     @Test
@@ -101,13 +100,12 @@ class AndroidAppConventionPluginTest {
         assertThat(result.task(":assemble")?.outcome).isEqualTo(TaskOutcome.SUCCESS)
     }
 
-    private fun runBuild(arguments: List<String>): BuildResult =
-        GradleRunner.create()
-            .withPluginClasspath()
-            .withGradleVersion(gradleVersion.version)
-            .withProjectDir(testProjectDir)
-            .withArguments(arguments)
-            .build()
+    private fun runBuild(arguments: List<String>): BuildResult = GradleRunner.create()
+        .withPluginClasspath()
+        .withGradleVersion(gradleVersion.version)
+        .withProjectDir(testProjectDir)
+        .withArguments(arguments)
+        .build()
 
     private fun writeFile(destination: File, content: String) {
         destination.bufferedWriter().use { writer ->
@@ -115,9 +113,7 @@ class AndroidAppConventionPluginTest {
         }
     }
 
-    private fun writeSettingsFile(
-        projectName: String = "testproject",
-    ) = writeFile(
+    private fun writeSettingsFile(projectName: String = "testproject",) = writeFile(
         settingsFile,
         """
             dependencyResolutionManagement {
@@ -179,7 +175,7 @@ class AndroidAppConventionPluginTest {
             
             data class TestCommonClass(val someVal: String)
             
-    """.trimIndent()
+        """.trimIndent(),
     )
 
     private fun writeJavaFile() = writeFile(
@@ -189,7 +185,7 @@ class AndroidAppConventionPluginTest {
             
             data class TestJavaClass(val someVal: String)
             
-    """.trimIndent()
+        """.trimIndent(),
     )
 
     private fun writeAndroidFile() = writeFile(
@@ -199,7 +195,7 @@ class AndroidAppConventionPluginTest {
             
             data class TestAndroidClass(val someVal: String)
             
-    """.trimIndent()
+        """.trimIndent(),
     )
 
     companion object {
