@@ -16,7 +16,7 @@ import java.io.File
 
 @ParameterizedClass
 @EnumSource(GradleTestVersion::class)
-class AndroidAppConventionPluginTest {
+class MultiplatformConventionPluginTest {
 
     @Parameter
     lateinit var gradleVersion: GradleTestVersion
