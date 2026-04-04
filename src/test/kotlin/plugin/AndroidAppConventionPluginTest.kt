@@ -1,10 +1,10 @@
 package plugin
 
 import com.google.common.truth.Truth.assertThat
-import com.google.common.truth.Truth.assertWithMessage
 import org.gradle.testkit.runner.BuildResult
 import org.gradle.testkit.runner.GradleRunner
 import org.gradle.testkit.runner.TaskOutcome
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
@@ -26,29 +26,79 @@ class AndroidAppConventionPluginTest {
 
     private lateinit var settingsFile: File
     private lateinit var buildFile: File
+    private lateinit var jvmFile: File
+    private lateinit var commonFile: File
+    private lateinit var androidFile: File
+
 
     @BeforeEach
     fun setup() {
         settingsFile = File(testProjectDir, "settings.gradle")
         buildFile = File(testProjectDir, "build.gradle")
-        // delete
-        File("testProjectDir${File.separator}$LOCAL_BUILD_CACHE_DIRECTORY").deleteRecursively()
+        jvmFile = File(
+            testProjectDir,
+            "src/jvmMain/kotlin/somepackage/TestJavaClass.kt"
+        ).also { it.parentFile.mkdirs() }
+        androidFile = File(
+            testProjectDir,
+            "src/androidMain/kotlin/somepackage/TestAndroidClass.kt"
+        ).also { it.parentFile.mkdirs() }
+        commonFile = File(
+            testProjectDir,
+            "src/commonMain/kotlin/somepackage/TestCommonClass.kt"
+        ).also { it.parentFile.mkdirs() }
+    }
+
+    @AfterEach
+    fun tearDown() {
+        // clear build cache
+        File(testProjectDir,"build").deleteRecursively()
     }
 
     @Test
     fun `can assemble jvm only`() {
         // Arrange
-        val task = "assemble"
         writeBuildFile(jvm = true, android = false)
         writeSettingsFile()
+        writeJavaFile()
+        writeCommonFile()
 
         // Act
-        val result = runBuild(listOf(task))
+        val result = runBuild(listOf("assemble"))
 
         // Assert
-        result.tasks.forEach {
-            assertThat(it.outcome).isEqualTo(TaskOutcome.SUCCESS)
-        }
+        assertThat(result.task(":assemble")?.outcome).isEqualTo(TaskOutcome.SUCCESS)
+    }
+
+    @Test
+    fun `can assemble android only`() {
+        // Arrange
+        writeBuildFile(jvm = false, android = true)
+        writeSettingsFile()
+        writeJavaFile()
+        writeCommonFile()
+
+        // Act
+        val result = runBuild(listOf("assemble"))
+
+        // Assert
+        assertThat(result.task(":assemble")?.outcome).isEqualTo(TaskOutcome.SUCCESS)
+    }
+
+    @Test
+    fun `can assemble jvm and android only`() {
+        // Arrange
+        writeBuildFile(jvm = true, android = true)
+        writeSettingsFile()
+        writeJavaFile()
+        writeAndroidFile()
+        writeCommonFile()
+
+        // Act
+        val result = runBuild(listOf("assemble"))
+
+        // Assert
+        assertThat(result.task(":assemble")?.outcome).isEqualTo(TaskOutcome.SUCCESS)
     }
 
     private fun runBuild(arguments: List<String>): BuildResult =
@@ -65,20 +115,6 @@ class AndroidAppConventionPluginTest {
         }
     }
 
-    private fun onFileOutput(
-        expectedFilePath: String = DEFAULT_OUTPUT_PATH,
-        assertion: (String) -> Unit,
-    ) {
-        val file = File("$testProjectDir${File.separator}$expectedFilePath")
-        assertWithMessage("File not found at $expectedFilePath").that(file.exists()).isTrue()
-        file.bufferedReader().use { reader ->
-            // trimIndent will standardize newline characters
-            reader.readText().trimIndent().also {
-                assertion(it)
-            }
-        }
-    }
-
     private fun writeSettingsFile(
         projectName: String = "testproject",
     ) = writeFile(
@@ -87,6 +123,7 @@ class AndroidAppConventionPluginTest {
             dependencyResolutionManagement {
                 repositories {
                     mavenCentral()
+                    google()
                 }
             }
             
@@ -135,9 +172,37 @@ class AndroidAppConventionPluginTest {
         }
         """.trimIndent()
 
+    private fun writeCommonFile() = writeFile(
+        commonFile,
+        """
+            package somepackage
+            
+            data class TestCommonClass(val someVal: String)
+            
+    """.trimIndent()
+    )
+
+    private fun writeJavaFile() = writeFile(
+        jvmFile,
+        """
+            package somepackage
+            
+            data class TestJavaClass(val someVal: String)
+            
+    """.trimIndent()
+    )
+
+    private fun writeAndroidFile() = writeFile(
+        commonFile,
+        """
+            package somepackage
+            
+            data class TestAndroidClass(val someVal: String)
+            
+    """.trimIndent()
+    )
+
     companion object {
-        private val DEFAULT_OUTPUT_PATH =
-            "build${File.separator}reports${File.separator}project-report.md"
         private const val LOCAL_BUILD_CACHE_DIRECTORY = "build-cache"
         private const val PLUGIN_NAME = "minirogue.multiplatform.library"
     }

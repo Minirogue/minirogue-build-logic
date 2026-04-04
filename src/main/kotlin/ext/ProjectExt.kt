@@ -13,11 +13,14 @@ internal fun getDateAsVersionName(): String {
 private val Project.modulePath
     get() = path.split(":").drop(1).filter { it != "public" }
 
-internal fun Project.generateProjectNamespace(): String = "com." +
-    "${rootProject.name}." +
-    modulePath.joinToString(".").replace("-", ".")
+internal fun Project.generateProjectNamespace(): String = "com." + rootProject.name +
+        modulePath.joinToString(separator = ".", prefix = ".")
+            .replace("-", ".")
+            .trimEnd {it == ".".first()}
 
-internal fun Project.generateResourcePrefix(): String = modulePath.first { it != "feature" && it != "library" }
-    .replace("-", "_") + "_"
+internal fun Project.generateResourcePrefix(): String =
+    modulePath.first { it != "feature" && it != "library" }
+        .replace("-", "_") + "_"
 
-internal fun Project.isMultiplatform(): Boolean = plugins.hasPlugin("org.jetbrains.kotlin.multiplatform")
+internal fun Project.isMultiplatform(): Boolean =
+    plugins.hasPlugin("org.jetbrains.kotlin.multiplatform")
