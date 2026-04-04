@@ -113,7 +113,7 @@ class AndroidAppConventionPluginTest {
         }
     }
 
-    private fun writeSettingsFile(projectName: String = "testproject",) = writeFile(
+    private fun writeSettingsFile(projectName: String = "testproject") = writeFile(
         settingsFile,
         """
             dependencyResolutionManagement {
