@@ -1,3 +1,4 @@
+import org.gradle.api.tasks.testing.Test
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -25,6 +26,10 @@ java {
     targetCompatibility = JavaVersion.toVersion(libs.versions.java.get())
 }
 
+tasks.test {
+    useJUnitPlatform()
+}
+
 detekt {
     config.setFrom(files("src/main/resources/detekt-config.yml"))
     buildUponDefaultConfig = true
@@ -32,6 +37,14 @@ detekt {
 }
 
 dependencies {
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.junit.jupiter:junit-jupiter-params")
+    testImplementation(gradleTestKit())
+    testImplementation(libs.truth)
+    testImplementation(platform("org.junit:junit-bom:6.0.1"))
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
     implementation(libs.android.gradlePlugin)
     implementation(libs.compose.gradlePlugin)
     implementation(libs.compose.compilerGradlePlugin)
