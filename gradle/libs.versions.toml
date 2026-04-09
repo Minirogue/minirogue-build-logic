@@ -9,7 +9,7 @@ kotlinLang = "2.3.20" # https://kotlinlang.org/docs/releases.html#release-detail
 ksp = "2.3.6" # https://github.com/google/ksp/releases
 metro = "0.11.4" # https://github.com/ZacSweers/metro/releases
 room = "2.8.4" # https://developer.android.com/jetpack/androidx/releases/room
-serialization = "1.10.0" # https://github.com/Kotlin/kotlinx.serialization/releases
+serialization = "1.11.0" # https://github.com/Kotlin/kotlinx.serialization/releases
 truth = "1.4.5"
 
 [libraries]
