@@ -1,5 +1,5 @@
 [versions]
-agp = "9.1.0" # https://developer.android.com/reference/tools/gradle-api
+agp = "9.1.1" # https://developer.android.com/reference/tools/gradle-api
 composeMultiplatform = "1.10.3" # https://github.com/JetBrains/compose-multiplatform/releases
 detekt = "2.0.0-alpha.2" # https://github.com/detekt/detekt/releases
 gradlePublish = "2.1.1"
