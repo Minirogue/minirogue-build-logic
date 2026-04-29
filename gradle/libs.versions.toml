@@ -1,7 +1,7 @@
 [versions]
 agp = "9.2.0" # https://developer.android.com/reference/tools/gradle-api
 composeMultiplatform = "1.10.3" # https://github.com/JetBrains/compose-multiplatform/releases
-detekt = "2.0.0-alpha.2" # https://github.com/detekt/detekt/releases
+detekt = "2.0.0-alpha.3" # https://github.com/detekt/detekt/releases
 gradlePublish = "2.1.1"
 hotReload = "1.0.0" # https://github.com/JetBrains/compose-hot-reload/releases
 java = "21"
