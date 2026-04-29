@@ -57,8 +57,7 @@ I will add a list here of repos that I have which use the build logic defined in
 This repo manages several dependencies (namely ones that have related gradle plugins) that will be inherited by any projects that consume it.
 As of version 0.2.5 the following dependencies and versions are used:
 
-- [Android Gradle Plugin (AGP)](https://developer.android.com/build/releases/gradle-plugin) = 9.1.1
-
+- [Android Gradle Plugin (AGP)](https://developer.android.com/build/releases/gradle-plugin) = 9.2.0
 - [ComposeMultiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-compose-1610.html) = 1.10.3
 - [Detekt](https://detekt.dev/changelog) = 2.0.0-alpha.2
 - [HotReload](https://github.com/JetBrains/compose-hot-reload/releases) = 1.0.0
@@ -68,6 +67,9 @@ As of version 0.2.5 the following dependencies and versions are used:
 - [Kotlin Symbol Processing](https://github.com/google/ksp/releases) = 2.3.6
 - [Metro](https://github.com/ZacSweers/metro/releases) = 0.13.2
 - [Room](https://developer.android.com/jetpack/androidx/releases/room) = 2.8.4
+
+Minimum supported Gradle version: 9.4.1
+Latest tested Gradle version: 9.5.0
 
 Note: if using compose hot reload (compose desktop only), then also include the following in settings.gradle:
 ```
