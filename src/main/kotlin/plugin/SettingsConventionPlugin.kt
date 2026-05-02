@@ -16,7 +16,6 @@ public class SettingsConventionPlugin : Plugin<Settings> {
             }
         }
 
-
         enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
     }
 }
