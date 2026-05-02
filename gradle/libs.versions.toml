@@ -2,6 +2,7 @@
 agp = "9.2.0" # https://developer.android.com/reference/tools/gradle-api
 composeMultiplatform = "1.10.3" # https://github.com/JetBrains/compose-multiplatform/releases
 detekt = "2.0.0-alpha.3" # https://github.com/detekt/detekt/releases
+foojay = "1.0.0"
 gradlePublish = "2.1.1"
 hotReload = "1.0.0" # https://github.com/JetBrains/compose-hot-reload/releases
 java = "21"
@@ -19,6 +20,7 @@ compose-gradlePlugin = { group = "org.jetbrains.compose", name = "compose-gradle
 compose-hotReloadGradlePlugin = { group = "org.jetbrains.compose.hot-reload", name = "hot-reload-gradle-plugin", version.ref = "hotReload" }
 detekt-formatting = { group = "dev.detekt", name = "detekt-rules-ktlint-wrapper", version.ref = "detekt" }
 detekt-gradlePlugin = { group = "dev.detekt", name = "detekt-gradle-plugin", version.ref = "detekt" }
+foojayResolver-gradlePlugin = { group = "org.gradle.toolchains.foojay-resolver", name = "org.gradle.toolchains.foojay-resolver.gradle.plugin", version.ref = "foojay" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlinLang" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "symbol-processing-gradle-plugin", version.ref = "ksp" }
 metro-gradlePlugin = { group = "dev.zacsweers.metro", name = "gradle-plugin", version.ref = "metro" }
