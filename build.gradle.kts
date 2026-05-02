@@ -1,4 +1,3 @@
-import org.gradle.api.tasks.testing.Test
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -54,6 +53,7 @@ dependencies {
     implementation(libs.ksp.gradlePlugin)
     implementation(libs.metro.gradlePlugin)
     implementation(libs.room.gradlePlugin)
+    implementation(libs.foojayResolver.gradlePlugin)
     implementation(libs.serialization.gradlePlugin)
 
     detektPlugins(libs.detekt.formatting)
@@ -76,6 +76,10 @@ gradlePlugin {
         register("jvmApp") {
             id = "minirogue.jvm.app"
             implementationClass = "plugin.JvmAppConventionPlugin"
+        }
+        register("settings") {
+            id = "minirogue.settings"
+            implementationClass = "plugin.SettingsConventionPlugin"
         }
     }
 }
