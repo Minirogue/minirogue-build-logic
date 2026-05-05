@@ -39,13 +39,19 @@ public open class MinirogueJvmAppExtension(private val project: Project) {
 
     internal val universalConfiguration = UniversalConfiguration(
         useGradleCheckerTask = false,
-        addScriptsTaskConfiguration = AddScriptsTaskConfiguration(scriptsDirectory),
+        addScriptsTaskConfiguration = AddScriptsTaskConfiguration(
+            scriptsDirectory
+        ),
     )
 
-    public fun composeApp(mainClass: String, useHotReload: Boolean = false): Unit =
-        project.configureCompose(desktopMainClass = mainClass, useHotReload = useHotReload)
+    public fun composeApp(mainClass: String, useHotReload: Boolean = false): Unit = project.configureCompose(
+        desktopMainClass = mainClass,
+        useHotReload = useHotReload
+    )
 
-    public fun jvmApp(mainClass: String): Unit = project.configureJvmApp(mainClass)
+    public fun jvmApp(mainClass: String): Unit = project.configureJvmApp(
+        mainClass
+    )
     public fun serialization(): Unit = project.configureSerialization()
     public fun metro(): Unit = project.configureMetro()
 }

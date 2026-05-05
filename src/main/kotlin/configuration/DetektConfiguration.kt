@@ -21,7 +21,10 @@ internal fun Project.configureDetekt() {
     if (rootProject.tasks.none { it.name == CREATE_DETEKT_CONFIG_TASK }) {
         // Creates single instance of this task in root project, then all projects' detekt tasks can
         //   depend on the single config file produced by this single task
-        rootProject.tasks.register(CREATE_DETEKT_CONFIG_TASK, CreateDetektConfigTask::class.java) {
+        rootProject.tasks.register(
+            CREATE_DETEKT_CONFIG_TASK,
+            CreateDetektConfigTask::class.java
+        ) {
             group = MINIROGUE_TASK_GROUP
             description = "Creates a common detekt configuration file defined by convention plugin"
         }
@@ -38,7 +41,9 @@ internal fun Project.configureDetekt() {
             "src/jvmMain", "src/jvmTest",
             "src/iosMain", "src/iosTest",
         )
-        config.setFrom(files(rootProject.tasks.getByName(CREATE_DETEKT_CONFIG_TASK)))
+        config.setFrom(
+            files(rootProject.tasks.getByName(CREATE_DETEKT_CONFIG_TASK))
+        )
         buildUponDefaultConfig.set(true)
         autoCorrect.set(true)
     }

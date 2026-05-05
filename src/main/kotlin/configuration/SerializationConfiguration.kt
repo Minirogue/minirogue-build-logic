@@ -13,8 +13,12 @@ internal fun Project.configureSerialization() {
     if (isMultiplatform()) {
         kotlinExtension.sourceSets.named("commonMain") {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$SERIALIZATION_VERSION")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$SERIALIZATION_VERSION")
+                implementation(
+                    "org.jetbrains.kotlinx:kotlinx-serialization-core:$SERIALIZATION_VERSION"
+                )
+                implementation(
+                    "org.jetbrains.kotlinx:kotlinx-serialization-json:$SERIALIZATION_VERSION"
+                )
             }
         }
     } else {

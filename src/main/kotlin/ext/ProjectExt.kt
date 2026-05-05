@@ -21,4 +21,6 @@ internal fun Project.generateProjectNamespace(): String = "com." + rootProject.n
 internal fun Project.generateResourcePrefix(): String = modulePath.first { it != "feature" && it != "library" }
     .replace("-", "_") + "_"
 
-internal fun Project.isMultiplatform(): Boolean = plugins.hasPlugin("org.jetbrains.kotlin.multiplatform")
+internal fun Project.isMultiplatform(): Boolean = plugins.hasPlugin(
+    "org.jetbrains.kotlin.multiplatform"
+)

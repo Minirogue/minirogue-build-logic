@@ -16,7 +16,9 @@ internal fun Project.applyUniversalConfigurations(universalConfiguration: Univer
     if (universalConfiguration.useGradleCheckerTask) configureGradleChecker()
     configureDetekt()
     configureGitHubConfigTask()
-    configureCreateSrc(if (isMultiplatform()) SourceType.CommonMultiplatform else SourceType.SinglePlatform)
+    configureCreateSrc(
+        if (isMultiplatform()) SourceType.CommonMultiplatform else SourceType.SinglePlatform
+    )
     configureAddScriptsTask(universalConfiguration.addScriptsTaskConfiguration)
     tasks.withType(KotlinCompilationTask::class.java) {
         compilerOptions {

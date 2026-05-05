@@ -43,7 +43,9 @@ public open class MinirogueMultiplatformLibraryExtension(private val project: Pr
 
     internal val universalConfiguration = UniversalConfiguration(
         useGradleCheckerTask = false,
-        addScriptsTaskConfiguration = AddScriptsTaskConfiguration(scriptsDirectory),
+        addScriptsTaskConfiguration = AddScriptsTaskConfiguration(
+            scriptsDirectory
+        ),
     )
 
     public fun platforms(action: Action<PlatformConfig>) {

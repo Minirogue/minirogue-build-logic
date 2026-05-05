@@ -29,7 +29,9 @@ internal open class GradleCheckerTask : DefaultTask() {
     @TaskAction
     fun checkGradle() {
         val allLines = gradleFile.readLines()
-        checkRootLines(allLines.filter { it.firstOrNull()?.isWhitespace() == false })
+        checkRootLines(
+            allLines.filter { it.firstOrNull()?.isWhitespace() == false }
+        )
         checkPluginsLines(allLines.take(3))
     }
 

@@ -11,11 +11,15 @@ import javax.inject.Inject
 internal open class CreateGitHubConfigTask @Inject constructor() : DefaultTask() {
 
     @OutputFile
-    val dependabotYamlFile = project.rootProject.file(".github${File.separator}dependabot.yml")
+    val dependabotYamlFile = project.rootProject.file(
+        ".github${File.separator}dependabot.yml"
+    )
 
     @OutputFile
     val buildAndChecksWorkflowFile =
-        project.rootProject.file(".github${File.separator}workflows${File.separator}checks.yml")
+        project.rootProject.file(
+            ".github${File.separator}workflows${File.separator}checks.yml"
+        )
 
     @TaskAction
     fun createFiles() {
@@ -49,7 +53,9 @@ internal open class CreateGitHubConfigTask @Inject constructor() : DefaultTask()
                 println("        uses: gradle/actions/setup-gradle@v5")
                 println("        with:")
                 println("          build-scan-publish: true")
-                println("          build-scan-terms-of-use-url: 'https://gradle.com/terms-of-service'")
+                println(
+                    "          build-scan-terms-of-use-url: 'https://gradle.com/terms-of-service'"
+                )
                 println("          build-scan-terms-of-use-agree: 'yes'")
                 println(
                     "        run: ./gradlew assembleDebug " +

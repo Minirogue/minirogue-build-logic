@@ -12,9 +12,14 @@ internal data class AddScriptsTaskConfiguration(val configuredScriptsDirectory: 
 internal fun Project.configureAddScriptsTask(configuration: AddScriptsTaskConfiguration) {
     if (rootProject.tasks.none { it.name == ADD_SCRIPTS_TASK }) {
         // Creates single instance of this task in root project
-        rootProject.tasks.register(ADD_SCRIPTS_TASK, AddScriptsTask::class.java) {
+        rootProject.tasks.register(
+            ADD_SCRIPTS_TASK,
+            AddScriptsTask::class.java
+        ) {
             val configuredScriptsDirectory = configuration.configuredScriptsDirectory.convention(
-                project.layout.projectDirectory.dir("scripts${File.separator}create-module"),
+                project.layout.projectDirectory.dir(
+                    "scripts${File.separator}create-module"
+                ),
             )
             scriptsDirectory.set(configuredScriptsDirectory)
 

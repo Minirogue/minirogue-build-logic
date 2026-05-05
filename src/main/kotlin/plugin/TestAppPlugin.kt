@@ -24,7 +24,9 @@ public class TestAppPlugin : Plugin<Project> {
                 target,
             )
 
-            applyUniversalConfigurations(testAppExtension.universalConfiguration)
+            applyUniversalConfigurations(
+                testAppExtension.universalConfiguration
+            )
             configureAndroidApp()
             configureMetro()
 
@@ -46,6 +48,8 @@ public open class MinirogueTestAppExtension(private val project: Project) {
 
     internal val universalConfiguration = UniversalConfiguration(
         useGradleCheckerTask = false,
-        addScriptsTaskConfiguration = AddScriptsTaskConfiguration(scriptsDirectory),
+        addScriptsTaskConfiguration = AddScriptsTaskConfiguration(
+            scriptsDirectory
+        ),
     )
 }
