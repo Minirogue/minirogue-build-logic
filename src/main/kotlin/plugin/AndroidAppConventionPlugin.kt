@@ -37,7 +37,7 @@ public open class MinirogueAndroidAppExtension(private val project: Project) {
     internal val universalConfiguration = UniversalConfiguration(
         useGradleCheckerTask = false,
         addScriptsTaskConfiguration = AddScriptsTaskConfiguration(
-            scriptsDirectory
+            scriptsDirectory,
         ),
     )
 

@@ -17,7 +17,7 @@ internal fun Project.applyUniversalConfigurations(universalConfiguration: Univer
     configureDetekt()
     configureGitHubConfigTask()
     configureCreateSrc(
-        if (isMultiplatform()) SourceType.CommonMultiplatform else SourceType.SinglePlatform
+        if (isMultiplatform()) SourceType.CommonMultiplatform else SourceType.SinglePlatform,
     )
     configureAddScriptsTask(universalConfiguration.addScriptsTaskConfiguration)
     tasks.withType(KotlinCompilationTask::class.java) {

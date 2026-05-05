@@ -24,7 +24,7 @@ internal abstract class CreateVersionCodeFileTask : DefaultTask() {
     fun copyScripts() {
         versionCodeSource.get().asFile.copyTo(
             target = outputFile.get().asFile,
-            overwrite = true
+            overwrite = true,
         )
     }
 }

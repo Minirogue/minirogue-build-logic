@@ -21,7 +21,7 @@ internal fun Project.configureCompose(desktopMainClass: String? = null, useHotRe
                 implementation(composeDependencies.material3)
                 implementation(composeDependencies.runtime)
                 implementation(
-                    ComposePlugin.CommonComponentsDependencies.resources
+                    ComposePlugin.CommonComponentsDependencies.resources,
                 )
             }
         }
@@ -32,7 +32,7 @@ internal fun Project.configureCompose(desktopMainClass: String? = null, useHotRe
             add("implementation", composeDependencies.runtime)
             add(
                 "implementation",
-                ComposePlugin.CommonComponentsDependencies.resources
+                ComposePlugin.CommonComponentsDependencies.resources,
             )
         }
     }
@@ -40,11 +40,11 @@ internal fun Project.configureCompose(desktopMainClass: String? = null, useHotRe
     if (desktopMainClass != null) {
         dependencies.add(
             "implementation",
-            ComposePlugin.DesktopDependencies.currentOs
+            ComposePlugin.DesktopDependencies.currentOs,
         )
         extensions.getByType(ComposeExtension::class.java).extensions
             .getByType(
-                DesktopExtension::class.java
+                DesktopExtension::class.java,
             ).application.mainClass = desktopMainClass
     }
 }

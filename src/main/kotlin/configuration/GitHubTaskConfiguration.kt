@@ -11,7 +11,7 @@ internal fun Project.configureGitHubConfigTask() {
     if (rootProject.tasks.none { it.name == CREATE_GITHUB_CONFIG_TASK }) {
         rootProject.tasks.register(
             CREATE_GITHUB_CONFIG_TASK,
-            CreateGitHubConfigTask::class.java
+            CreateGitHubConfigTask::class.java,
         ) {
             group = MINIROGUE_TASK_GROUP
             description =

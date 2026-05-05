@@ -20,7 +20,7 @@ internal fun Project.configureRoomMultiplatform() {
     kotlinExtension.sourceSets.named("commonMain").configure {
         this.dependencies {
             implementation(
-                "androidx.room:room-runtime:$ROOM_VERSION"
+                "androidx.room:room-runtime:$ROOM_VERSION",
             )
         }
     }

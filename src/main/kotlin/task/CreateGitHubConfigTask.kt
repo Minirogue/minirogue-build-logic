@@ -12,13 +12,13 @@ internal open class CreateGitHubConfigTask @Inject constructor() : DefaultTask()
 
     @OutputFile
     val dependabotYamlFile = project.rootProject.file(
-        ".github${File.separator}dependabot.yml"
+        ".github${File.separator}dependabot.yml",
     )
 
     @OutputFile
     val buildAndChecksWorkflowFile =
         project.rootProject.file(
-            ".github${File.separator}workflows${File.separator}checks.yml"
+            ".github${File.separator}workflows${File.separator}checks.yml",
         )
 
     @TaskAction
@@ -54,7 +54,7 @@ internal open class CreateGitHubConfigTask @Inject constructor() : DefaultTask()
                 println("        with:")
                 println("          build-scan-publish: true")
                 println(
-                    "          build-scan-terms-of-use-url: 'https://gradle.com/terms-of-service'"
+                    "          build-scan-terms-of-use-url: 'https://gradle.com/terms-of-service'",
                 )
                 println("          build-scan-terms-of-use-agree: 'yes'")
                 println(

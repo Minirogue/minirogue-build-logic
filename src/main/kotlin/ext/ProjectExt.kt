@@ -22,5 +22,5 @@ internal fun Project.generateResourcePrefix(): String = modulePath.first { it !=
     .replace("-", "_") + "_"
 
 internal fun Project.isMultiplatform(): Boolean = plugins.hasPlugin(
-    "org.jetbrains.kotlin.multiplatform"
+    "org.jetbrains.kotlin.multiplatform",
 )

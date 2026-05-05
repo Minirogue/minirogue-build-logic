@@ -14,11 +14,11 @@ internal fun Project.configureAddScriptsTask(configuration: AddScriptsTaskConfig
         // Creates single instance of this task in root project
         rootProject.tasks.register(
             ADD_SCRIPTS_TASK,
-            AddScriptsTask::class.java
+            AddScriptsTask::class.java,
         ) {
             val configuredScriptsDirectory = configuration.configuredScriptsDirectory.convention(
                 project.layout.projectDirectory.dir(
-                    "scripts${File.separator}create-module"
+                    "scripts${File.separator}create-module",
                 ),
             )
             scriptsDirectory.set(configuredScriptsDirectory)

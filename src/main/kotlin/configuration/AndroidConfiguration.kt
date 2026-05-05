@@ -24,7 +24,7 @@ internal fun Project.configureAndroidMultiplatformLibrary() {
     with(pluginManager) { apply(KotlinMultiplatformAndroidPlugin::class.java) }
     extensions.getByType(KotlinMultiplatformExtension::class.java)
         .extensions.configure(
-            KotlinMultiplatformAndroidLibraryTarget::class.java
+            KotlinMultiplatformAndroidLibraryTarget::class.java,
         ) {
             namespace = generateProjectNamespace()
             compileSdk = COMPILE_SDK
@@ -62,7 +62,7 @@ internal fun Project.configureAndroidApp() {
                 isDebuggable = false
                 isMinifyEnabled = true
                 proguardFiles.add(
-                    getDefaultProguardFile("proguard-android-optimize.txt")
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
                 )
                 proguardFiles.add(project.file("proguard-rules.pro"))
             }
@@ -93,7 +93,7 @@ private fun Project.configureCreateAndroidVersionCodeTask() {
         versionCodeSource.set(
             tasks.named(
                 "getGitCommitNumber",
-                GetGitCommitNumberTask::class.java
+                GetGitCommitNumberTask::class.java,
             )
                 .get().numberOfCommitsInBranchHistory,
         )
@@ -111,7 +111,7 @@ private fun Project.getVersionCodeFromPropertyFile(): Int = try {
     versionFile.get().asFile.readText().trim().toIntOrNull()
         ?: 1.also {
             logger.warn(
-                "versionCode not properly formatted in $versionFile, defaulting to 1"
+                "versionCode not properly formatted in $versionFile, defaulting to 1",
             )
         }
 } catch (ioException: IOException) {

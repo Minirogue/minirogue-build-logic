@@ -40,17 +40,17 @@ public open class MinirogueJvmAppExtension(private val project: Project) {
     internal val universalConfiguration = UniversalConfiguration(
         useGradleCheckerTask = false,
         addScriptsTaskConfiguration = AddScriptsTaskConfiguration(
-            scriptsDirectory
+            scriptsDirectory,
         ),
     )
 
     public fun composeApp(mainClass: String, useHotReload: Boolean = false): Unit = project.configureCompose(
         desktopMainClass = mainClass,
-        useHotReload = useHotReload
+        useHotReload = useHotReload,
     )
 
     public fun jvmApp(mainClass: String): Unit = project.configureJvmApp(
-        mainClass
+        mainClass,
     )
     public fun serialization(): Unit = project.configureSerialization()
     public fun metro(): Unit = project.configureMetro()

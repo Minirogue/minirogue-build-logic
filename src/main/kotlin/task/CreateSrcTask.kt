@@ -25,19 +25,19 @@ internal enum class SourceType {
 internal open class CreateSrcTask @Inject constructor(sourceType: SourceType) : DefaultTask() {
     private val pathToAdd = project.generateProjectNamespace().replace(
         ".",
-        File.separator
+        File.separator,
     )
 
     @OutputDirectories
     val outputDirectory = when (sourceType) {
         SourceType.SinglePlatform -> project.files(
             sourceDirectory("main"),
-            sourceDirectory("test")
+            sourceDirectory("test"),
         )
 
         SourceType.CommonMultiplatform -> project.files(
             sourceDirectory("commonMain"),
-            sourceDirectory("commonTest")
+            sourceDirectory("commonTest"),
         )
 
         SourceType.AndroidMultiplatform -> project.files(
@@ -48,12 +48,12 @@ internal open class CreateSrcTask @Inject constructor(sourceType: SourceType) : 
 
         SourceType.JvmMultiplatform -> project.files(
             sourceDirectory("jvmMain"),
-            sourceDirectory("jvmTest")
+            sourceDirectory("jvmTest"),
         )
 
         SourceType.IosMultiplatform -> project.files(
             sourceDirectory("iosMain"),
-            sourceDirectory("iosTest")
+            sourceDirectory("iosTest"),
         )
     }
 

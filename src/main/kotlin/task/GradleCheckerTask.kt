@@ -30,7 +30,7 @@ internal open class GradleCheckerTask : DefaultTask() {
     fun checkGradle() {
         val allLines = gradleFile.readLines()
         checkRootLines(
-            allLines.filter { it.firstOrNull()?.isWhitespace() == false }
+            allLines.filter { it.firstOrNull()?.isWhitespace() == false },
         )
         checkPluginsLines(allLines.take(3))
     }

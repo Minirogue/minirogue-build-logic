@@ -10,17 +10,17 @@ import kotlin.jvm.java
 internal open class CreateDetektConfigTask : DefaultTask() {
     @OutputFile // TODO make this configurable
     val outputFile = project.layout.buildDirectory.file(
-        "minirogue/detekt-config.yml"
+        "minirogue/detekt-config.yml",
     )
 
     @TaskAction
     fun writeDetektConfig() {
         // TODO is this technically an input for the task?
         val inputStream = this::class.java.getResourceAsStream(
-            "/detekt-config.yml"
+            "/detekt-config.yml",
         )
         requireNotNull(
-            inputStream
+            inputStream,
         ) { "detekt-config.yml not found in jar resources" }
         val outputStream = outputFile.get().asFile.outputStream()
         try {

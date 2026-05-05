@@ -8,7 +8,7 @@ import task.SourceType
 
 internal fun Project.configureCreateSrc(srcType: SourceType) {
     rootProject.tasks.findByName(
-        "clearEmptyDirs"
+        "clearEmptyDirs",
     ) ?: rootProject.tasks.register(
         "clearEmptyDirs",
         ClearEmptyDirectoryTask::class.java,
@@ -17,12 +17,12 @@ internal fun Project.configureCreateSrc(srcType: SourceType) {
         description = "Recursively clears all empty directories"
     }
     val rootTask = tasks.findByName(
-        "createSrc"
+        "createSrc",
     ) ?: tasks.register("createSrc").get()
     val newTask = tasks.register(
         "createSrc$srcType",
         CreateSrcTask::class.java,
-        srcType
+        srcType,
     )
         .apply {
             configure {

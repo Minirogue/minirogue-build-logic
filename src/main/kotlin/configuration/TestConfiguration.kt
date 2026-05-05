@@ -9,7 +9,7 @@ internal fun Project.configureTest(sourceType: SourceType) {
         SourceType.SinglePlatform -> logger.warn(
             "test configuration for SourceType.SinglePlatform not implemented",
             IllegalArgumentException(
-                "$sourceType not supported in configureTest()"
+                "$sourceType not supported in configureTest()",
             ),
         )
 
@@ -18,7 +18,7 @@ internal fun Project.configureTest(sourceType: SourceType) {
                 dependencies {
                     implementation("org.jetbrains.kotlin:kotlin-test-common")
                     implementation(
-                        "org.jetbrains.kotlin:kotlin-test-annotations-common"
+                        "org.jetbrains.kotlin:kotlin-test-annotations-common",
                     )
                 }
             }
@@ -35,7 +35,7 @@ internal fun Project.configureTest(sourceType: SourceType) {
         SourceType.IosMultiplatform -> logger.warn(
             "This version of build logic does not yet support iOS test configuration",
             IllegalArgumentException(
-                "$sourceType not supported in configureTest()"
+                "$sourceType not supported in configureTest()",
             ),
         )
 

@@ -9,7 +9,7 @@ internal fun Project.kspAll(dependencyNotation: Any) {
             if (any { it.name == platform.mainSource }) {
                 dependencies.add(
                     platform.kspConfigurationName,
-                    dependencyNotation
+                    dependencyNotation,
                 )
             }
         }

@@ -25,7 +25,7 @@ internal abstract class AddScriptsTask : DefaultTask() {
         ).forEach { resourcePath ->
             val inputStream = this::class.java.getResourceAsStream(resourcePath)
             requireNotNull(
-                inputStream
+                inputStream,
             ) { "$resourcePath not found in jar resources" }
             val outputStream = scriptsDirectory.get()
                 .file(resourcePath.split("/").last())

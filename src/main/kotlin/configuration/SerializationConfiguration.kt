@@ -14,10 +14,10 @@ internal fun Project.configureSerialization() {
         kotlinExtension.sourceSets.named("commonMain") {
             dependencies {
                 implementation(
-                    "org.jetbrains.kotlinx:kotlinx-serialization-core:$SERIALIZATION_VERSION"
+                    "org.jetbrains.kotlinx:kotlinx-serialization-core:$SERIALIZATION_VERSION",
                 )
                 implementation(
-                    "org.jetbrains.kotlinx:kotlinx-serialization-json:$SERIALIZATION_VERSION"
+                    "org.jetbrains.kotlinx:kotlinx-serialization-json:$SERIALIZATION_VERSION",
                 )
             }
         }

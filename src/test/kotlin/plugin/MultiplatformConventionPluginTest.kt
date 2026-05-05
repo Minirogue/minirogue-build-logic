@@ -67,7 +67,7 @@ class MultiplatformConventionPluginTest {
 
         // Assert
         assertThat(
-            result.task(":assemble")?.outcome
+            result.task(":assemble")?.outcome,
         ).isEqualTo(TaskOutcome.SUCCESS)
     }
 
@@ -84,7 +84,7 @@ class MultiplatformConventionPluginTest {
 
         // Assert
         assertThat(
-            result.task(":assemble")?.outcome
+            result.task(":assemble")?.outcome,
         ).isEqualTo(TaskOutcome.SUCCESS)
     }
 
@@ -102,7 +102,7 @@ class MultiplatformConventionPluginTest {
 
         // Assert
         assertThat(
-            result.task(":assemble")?.outcome
+            result.task(":assemble")?.outcome,
         ).isEqualTo(TaskOutcome.SUCCESS)
     }
 
@@ -156,19 +156,19 @@ class MultiplatformConventionPluginTest {
 
             dependencies {
                 ${implementationDependencies.joinToString(
-            separator = "\r\n"
+            separator = "\r\n",
         ) { "implementation(\"$it\")" }}
                 ${apiDependencies.joinToString(
-            separator = "\r\n"
+            separator = "\r\n",
         ) { "api(\"$it\")" }}
                 ${compileOnlyDependencies.joinToString(
-            separator = "\r\n"
+            separator = "\r\n",
         ) { "compileOnly(\"$it\")" }}
                 ${testImplementationDependencies.joinToString(
-            separator = "\r\n"
+            separator = "\r\n",
         ) { "testImplementation(\"$it\")" }}
                 ${testCompileOnlyDependencies.joinToString(
-            separator = "\r\n"
+            separator = "\r\n",
         ) { "testCompileOnly(\"$it\")" }}
             }
         """.trimIndent(),
