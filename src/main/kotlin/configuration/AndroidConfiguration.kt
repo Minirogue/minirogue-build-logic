@@ -23,7 +23,9 @@ private const val TARGET_SDK = 36
 internal fun Project.configureAndroidMultiplatformLibrary() {
     with(pluginManager) { apply(KotlinMultiplatformAndroidPlugin::class.java) }
     extensions.getByType(KotlinMultiplatformExtension::class.java)
-        .extensions.configure(KotlinMultiplatformAndroidLibraryTarget::class.java) {
+        .extensions.configure(
+            KotlinMultiplatformAndroidLibraryTarget::class.java,
+        ) {
             namespace = generateProjectNamespace()
             compileSdk = COMPILE_SDK
             minSdk = MIN_SDK
@@ -59,7 +61,9 @@ internal fun Project.configureAndroidApp() {
             release {
                 isDebuggable = false
                 isMinifyEnabled = true
-                proguardFiles.add(getDefaultProguardFile("proguard-android-optimize.txt"))
+                proguardFiles.add(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                )
                 proguardFiles.add(project.file("proguard-rules.pro"))
             }
             debug {
@@ -87,7 +91,10 @@ private fun Project.configureCreateAndroidVersionCodeTask() {
     ) {
         dependsOn("getGitCommitNumber")
         versionCodeSource.set(
-            tasks.named("getGitCommitNumber", GetGitCommitNumberTask::class.java)
+            tasks.named(
+                "getGitCommitNumber",
+                GetGitCommitNumberTask::class.java,
+            )
                 .get().numberOfCommitsInBranchHistory,
         )
 
@@ -102,7 +109,11 @@ private fun Project.getVersionCodeFromPropertyFile(): Int = try {
     val versionFile =
         layout.buildDirectory.file("minirogue${File.separator}versionCode") // TODO extract to configurable location
     versionFile.get().asFile.readText().trim().toIntOrNull()
-        ?: 1.also { logger.warn("versionCode not properly formatted in $versionFile, defaulting to 1") }
+        ?: 1.also {
+            logger.warn(
+                "versionCode not properly formatted in $versionFile, defaulting to 1",
+            )
+        }
 } catch (ioException: IOException) {
     logger.warn(
         "${ioException.message} \n Couldn't read versionCode from createAndroidVersionCode task." +
