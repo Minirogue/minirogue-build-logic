@@ -45,15 +45,16 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     implementation(libs.android.gradlePlugin)
-    implementation(libs.compose.gradlePlugin)
     implementation(libs.compose.compilerGradlePlugin)
+    implementation(libs.compose.gradlePlugin)
     implementation(libs.compose.hotReloadGradlePlugin)
     implementation(libs.detekt.gradlePlugin)
+    implementation(libs.develocity.gradlePlugin)
+    implementation(libs.foojayResolver.gradlePlugin)
     implementation(libs.kotlin.gradlePlugin)
     implementation(libs.ksp.gradlePlugin)
     implementation(libs.metro.gradlePlugin)
     implementation(libs.room.gradlePlugin)
-    implementation(libs.foojayResolver.gradlePlugin)
     implementation(libs.serialization.gradlePlugin)
 
     detektPlugins(libs.detekt.formatting)
