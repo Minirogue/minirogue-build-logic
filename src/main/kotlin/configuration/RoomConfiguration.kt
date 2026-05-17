@@ -18,6 +18,10 @@ internal fun Project.configureRoomMultiplatform() {
     }
     kspAll("androidx.room:room-compiler:$ROOM_VERSION")
     kotlinExtension.sourceSets.named("commonMain").configure {
-        this.dependencies { implementation("androidx.room:room-runtime:$ROOM_VERSION") }
+        this.dependencies {
+            implementation(
+                "androidx.room:room-runtime:$ROOM_VERSION",
+            )
+        }
     }
 }

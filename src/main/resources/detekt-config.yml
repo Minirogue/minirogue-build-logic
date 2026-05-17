@@ -27,6 +27,9 @@ ktlint:
     active: true
   TrailingCommaOnDeclarationSite:
     active: true
+  ArgumentListWrapping:
+    active: true
+    maxLineLength: 80
 
 complexity:
   LongParameterList:

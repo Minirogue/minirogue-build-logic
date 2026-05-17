@@ -1,4 +1,3 @@
-import org.gradle.api.tasks.testing.Test
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -46,10 +45,12 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     implementation(libs.android.gradlePlugin)
-    implementation(libs.compose.gradlePlugin)
     implementation(libs.compose.compilerGradlePlugin)
+    implementation(libs.compose.gradlePlugin)
     implementation(libs.compose.hotReloadGradlePlugin)
     implementation(libs.detekt.gradlePlugin)
+    implementation(libs.develocity.gradlePlugin)
+    implementation(libs.foojayResolver.gradlePlugin)
     implementation(libs.kotlin.gradlePlugin)
     implementation(libs.ksp.gradlePlugin)
     implementation(libs.metro.gradlePlugin)
@@ -76,6 +77,10 @@ gradlePlugin {
         register("jvmApp") {
             id = "minirogue.jvm.app"
             implementationClass = "plugin.JvmAppConventionPlugin"
+        }
+        register("settings") {
+            id = "minirogue.settings"
+            implementationClass = "plugin.SettingsConventionPlugin"
         }
     }
 }
