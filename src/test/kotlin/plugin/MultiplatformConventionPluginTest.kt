@@ -66,7 +66,9 @@ class MultiplatformConventionPluginTest {
         val result = runBuild(listOf("assemble"))
 
         // Assert
-        assertThat(result.task(":assemble")?.outcome).isEqualTo(TaskOutcome.SUCCESS)
+        assertThat(
+            result.task(":assemble")?.outcome,
+        ).isEqualTo(TaskOutcome.SUCCESS)
     }
 
     @Test
@@ -81,7 +83,9 @@ class MultiplatformConventionPluginTest {
         val result = runBuild(listOf("assemble"))
 
         // Assert
-        assertThat(result.task(":assemble")?.outcome).isEqualTo(TaskOutcome.SUCCESS)
+        assertThat(
+            result.task(":assemble")?.outcome,
+        ).isEqualTo(TaskOutcome.SUCCESS)
     }
 
     @Test
@@ -97,7 +101,9 @@ class MultiplatformConventionPluginTest {
         val result = runBuild(listOf("assemble"))
 
         // Assert
-        assertThat(result.task(":assemble")?.outcome).isEqualTo(TaskOutcome.SUCCESS)
+        assertThat(
+            result.task(":assemble")?.outcome,
+        ).isEqualTo(TaskOutcome.SUCCESS)
     }
 
     private fun runBuild(arguments: List<String>): BuildResult = GradleRunner.create()
@@ -149,11 +155,21 @@ class MultiplatformConventionPluginTest {
             ${getExtensionBlock(jvm, android)}
 
             dependencies {
-                ${implementationDependencies.joinToString(separator = "\r\n") { "implementation(\"$it\")" }}
-                ${apiDependencies.joinToString(separator = "\r\n") { "api(\"$it\")" }}
-                ${compileOnlyDependencies.joinToString(separator = "\r\n") { "compileOnly(\"$it\")" }}
-                ${testImplementationDependencies.joinToString(separator = "\r\n") { "testImplementation(\"$it\")" }}
-                ${testCompileOnlyDependencies.joinToString(separator = "\r\n") { "testCompileOnly(\"$it\")" }}
+                ${implementationDependencies.joinToString(
+            separator = "\r\n",
+        ) { "implementation(\"$it\")" }}
+                ${apiDependencies.joinToString(
+            separator = "\r\n",
+        ) { "api(\"$it\")" }}
+                ${compileOnlyDependencies.joinToString(
+            separator = "\r\n",
+        ) { "compileOnly(\"$it\")" }}
+                ${testImplementationDependencies.joinToString(
+            separator = "\r\n",
+        ) { "testImplementation(\"$it\")" }}
+                ${testCompileOnlyDependencies.joinToString(
+            separator = "\r\n",
+        ) { "testCompileOnly(\"$it\")" }}
             }
         """.trimIndent(),
     )

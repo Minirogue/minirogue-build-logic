@@ -23,13 +23,22 @@ internal enum class SourceType {
     because = "output directories of this task will not need to be recreated in general and will be changing regularly",
 )
 internal open class CreateSrcTask @Inject constructor(sourceType: SourceType) : DefaultTask() {
-    private val pathToAdd = project.generateProjectNamespace().replace(".", File.separator)
+    private val pathToAdd = project.generateProjectNamespace().replace(
+        ".",
+        File.separator,
+    )
 
     @OutputDirectories
     val outputDirectory = when (sourceType) {
-        SourceType.SinglePlatform -> project.files(sourceDirectory("main"), sourceDirectory("test"))
+        SourceType.SinglePlatform -> project.files(
+            sourceDirectory("main"),
+            sourceDirectory("test"),
+        )
 
-        SourceType.CommonMultiplatform -> project.files(sourceDirectory("commonMain"), sourceDirectory("commonTest"))
+        SourceType.CommonMultiplatform -> project.files(
+            sourceDirectory("commonMain"),
+            sourceDirectory("commonTest"),
+        )
 
         SourceType.AndroidMultiplatform -> project.files(
             sourceDirectory("androidMain"),
@@ -37,9 +46,15 @@ internal open class CreateSrcTask @Inject constructor(sourceType: SourceType) : 
             sourceDirectory("androidDeviceTest"),
         )
 
-        SourceType.JvmMultiplatform -> project.files(sourceDirectory("jvmMain"), sourceDirectory("jvmTest"))
+        SourceType.JvmMultiplatform -> project.files(
+            sourceDirectory("jvmMain"),
+            sourceDirectory("jvmTest"),
+        )
 
-        SourceType.IosMultiplatform -> project.files(sourceDirectory("iosMain"), sourceDirectory("iosTest"))
+        SourceType.IosMultiplatform -> project.files(
+            sourceDirectory("iosMain"),
+            sourceDirectory("iosTest"),
+        )
     }
 
     @TaskAction

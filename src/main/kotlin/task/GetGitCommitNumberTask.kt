@@ -6,7 +6,9 @@ import org.gradle.api.tasks.TaskAction
 import org.gradle.api.tasks.UntrackedTask
 import org.jetbrains.kotlin.konan.file.File
 
-@UntrackedTask(because = "git process must be run to determine if it is actually up-to-date")
+@UntrackedTask(
+    because = "git process must be run to determine if it is actually up-to-date",
+)
 internal open class GetGitCommitNumberTask : DefaultTask() {
     @get:OutputFile
     val numberOfCommitsInBranchHistory = project.layout.buildDirectory
